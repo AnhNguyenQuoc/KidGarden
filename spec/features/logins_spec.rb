@@ -14,7 +14,7 @@ RSpec.feature "Logins", type: :feature do
     expect(page).to have_content "You have to confirm your email address before continuing."
   end
 
-  scenario "Login with invalid user without active mail" do
+  scenario "Login with invalid user" do
     visit "/login"
     fill_in "Email", with: ""
     fill_in "Password",with: "123456"
