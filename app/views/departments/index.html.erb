@@ -1,0 +1,7 @@
+<% @department.each do |department| %>
+    <p>Title <%= department.name %> </p>
+    <p>Leader <%= department.leader %></p>
+    <%= link_to "Edit", edit_department_path(department) %>
+    <%= link_to "Delete", department, method: :delete, data: {confirm: 'Are you sure'} %>
+    <br>
+<% end %>

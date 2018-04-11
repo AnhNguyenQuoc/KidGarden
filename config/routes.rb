@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  get 'departments/index'
+
   mount Ckeditor::Engine => '/ckeditor'
   resources :news
   devise_for :users
@@ -12,4 +15,5 @@ Rails.application.routes.draw do
     get '/forget_password' => 'devise/passwords#new'
     get '/new_password' => 'devise/passwords#edit'
   end
+  resources :departments
 end
