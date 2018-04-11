@@ -1,0 +1,9 @@
+<%= form_for @department, url: {action: 'create'} do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    
+    <%= f.label :leader %>
+    <%= f.text_field :leader %>
+    
+    <%= f.submit "Create" %>
+<% end %>
