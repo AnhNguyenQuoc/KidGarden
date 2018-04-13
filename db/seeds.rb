@@ -7,3 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 users = User.create(email: "admin@gmail.com", password: "123456", password_confirmation: "123456", admin: 3)
+
+Department.create!(name: "Kế toán", leader: Faker::Name.name_with_middle)
+Department.create!(name: "Y tế", leader: Faker::Name.name_with_middle)
+Department.create!(name: "Bảo vệ", leader: Faker::Name.name_with_middle)
+Department.create!(name: "Kế toán", leader: Faker::Name.name_with_middle)
