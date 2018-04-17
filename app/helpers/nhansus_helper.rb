@@ -1,0 +1,2 @@
+module NhansusHelper
+end

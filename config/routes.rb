@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :nhansus
+  resources :lops
   get 'departments/index'
 
   mount Ckeditor::Engine => '/ckeditor'

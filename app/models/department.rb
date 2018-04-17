@@ -1,5 +1,6 @@
 class Department < ApplicationRecord
 
+    has_many :nhansus
 
 
     ONLY_CHARACTER = /[a-zA-Z\w\s]*/

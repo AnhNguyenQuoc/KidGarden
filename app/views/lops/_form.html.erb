@@ -1,0 +1,35 @@
+<%= form_with(model: lop, local: true) do |form| %>
+  <% if lop.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(lop.errors.count, "error") %> prohibited this lop from being saved:</h2>
+
+      <ul>
+      <% lop.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :khoihoc, "Khối học" %>
+    <%= form.text_field :khoihoc, id: :lop_khoihoc %>
+  </div>
+
+  <div class="field">
+    <%= form.label :lophoc, "Lớp học" %>
+    <%= form.text_field :lophoc, id: :lop_lophoc %>
+  </div>
+
+  <div class="field">
+    <%= form.label :syso, "Sĩ số" %>
+    <%= form.number_field :syso, id: :lop_syso %>
+  </div>
+
+
+   <%= form.hidden_field :department_id, value: Department.find_by(name: "Tổ trưởng / phó các lớp").id %>
+
+  <div class="actions">
+    <%= form.submit "Tạo lớp" %>
+  </div>
+<% end %>

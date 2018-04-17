@@ -1,0 +1,251 @@
+<%= form_with(model: nhansu, local: true) do |form| %>
+  <% if nhansu.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(nhansu.errors.count, "error") %> prohibited this nhansu from being saved:</h2>
+
+      <ul>
+      <% nhansu.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :hoten, "Họ Tên" %>
+    <%= form.text_field :hoten, id: :nhansu_hoten %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ngaysinh, "Ngày sinh" %>
+    <%= form.date_field :ngaysinh, id: :nhansu_ngaysinh %>
+  </div>
+
+  <div class="field">
+    <%= form.label :gioitinh, "Giới tính"%>
+    <%= form.label :gioitinh, "Nam"%>
+    <%= form.radio_button :gioitinh, true %>
+    <%= form.label :gioitinh, "Nữ"%>
+    <%= form.radio_button :gioitinh, false %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tengoikhac, "Tên gọi khác" %>
+    <%= form.text_field :tengoikhac, id: :nhansu_tengoikhac %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sohieucongchuc, "Số hiệu công chức" %>
+    <%= form.number_field :sohieucongchuc, id: :nhansu_sohieucongchuc %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cmnd, "Chức minh nhân dân" %>
+    <%= form.number_field :cmnd, id: :nhansu_cmnd %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ngaycapcmnd, "Ngày cấp cmnd" %>
+    <%= form.date_field :ngaycapcmnd, id: :nhansu_ngaycapcmnd %>
+  </div>
+
+  <div class="field">
+    <%= form.label :noicapcmnd, "Nơi cấp cmnd" %>
+    <%= form.text_field :noicapcmnd, id: :nhansu_noicapcmnd %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tenxeptkb, "Tên xếp tkb" %>
+    <%= form.text_field :tenxeptkb, id: :nhansu_tenxeptkb %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dantoc, "Dân tộc" %>
+    <%= form.text_field :dantoc, id: :nhansu_dantoc %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tongiao, "Tôn giáo" %>
+    <%= form.text_field :tongiao, id: :nhansu_tongiao %>
+  </div>
+
+  <div class="field">
+    <%= form.label :quoctich, "Quốc tịch" %>
+    <%= form.text_field :quoctich, id: :nhansu_quoctich %>
+  </div>
+
+  <div class="field">
+    <%= form.label :noisinh, "Nơi sinh" %>
+    <%= form.text_field :noisinh, id: :nhansu_noisinh %>
+  </div>
+
+  <div class="field">
+    <%= form.label :diachithuongtru, "Địa chỉ thường trú" %>
+    <%= form.text_field :diachithuongtru, id: :nhansu_diachithuongtru %>
+  </div>
+
+  <div class="field">
+    <%= form.label :noiohiennay, "Nơi ở hiện nay" %>
+    <%= form.text_field :noiohiennay, id: :nhansu_noiohiennay %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dtcoquan, "Điện thoại cơ quan" %>
+    <%= form.number_field :dtcoquan, id: :nhansu_dtcoquan %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dtnharieng, "Điện thoại nhà riêng" %>
+    <%= form.number_field :dtnharieng, id: :nhansu_dtnharieng %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dtdd, "Điện thoại di động" %>
+    <%= form.number_field :dtdd, id: :nhansu_dtdd %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email, "Email" %>
+    <%= form.text_field :email, id: :nhansu_email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tinhtranghonnhan, "Tình trạng hôn nhân" %>
+    <%= form.check_box :tinhtranghonnhan, id: :nhansu_tinhtranghonnhan %>
+  </div>
+
+  <div class="field">
+    <%= form.label :thanhphanxuatthan, "Thành phần xuất thân" %>
+    <%= form.text_field :thanhphanxuatthan, id: :nhansu_thanhphanxuatthan %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dienuutiengd, "Diện ưu tiên gia định" %>
+    <%= form.text_field :dienuutiengd, id: :nhansu_dienuutiengd %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dienuutienbanthan, "Diện ưu tiên bản thân" %>
+    <%= form.text_field :dienuutienbanthan, id: :nhansu_dienuutienbanthan %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nangkieu, "Năng kiếu" %>
+    <%= form.text_field :nangkieu, id: :nhansu_nangkieu %>
+  </div>
+
+  <div class="field">
+    <%= form.label :suckhoe, "Sức khỏe" %>
+    <%= form.text_field :suckhoe, id: :nhansu_suckhoe %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nhommau, "Nhóm máu" %>
+    <%= form.text_field :nhommau, id: :nhansu_nhommau %>
+  </div>
+
+  <div class="field">
+    <%= form.label :chieucao, "Chiều cao" %>
+    <%= form.number_field :chieucao, id: :nhansu_chieucao %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cannang, "Cân nặng" %>
+    <%= form.number_field :cannang, id: :nhansu_cannang %>
+  </div>
+
+  <div class="field">
+    <%= form.label :khuyettan, "Khuyết tật" %>
+    <%= form.check_box :khuyettan, id: :nhansu_khuyettan %>
+  </div>
+
+  <div class="field">
+    <%= form.label :stk, "Số tài khoản" %>
+    <%= form.text_field :stk, id: :nhansu_stk %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nganhangmotaikhoan, "Ngân hàng tài khoản" %>
+    <%= form.text_field :nganhangmotaikhoan, id: :nhansu_nganhangmotaikhoan %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ngaybatdaudongbhxh, "Ngày bắt đầu đóng bhxh" %>
+    <%= form.date_field :ngaybatdaudongbhxh, id: :nhansu_ngaybatdaudongbhxh %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sobhxh, "Số bảo hiểm xã hội" %>
+    <%= form.text_field :sobhxh, id: :nhansu_sobhxh %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ngayhopdong, "Ngày hợp đồng" %>
+    <%= form.date_field :ngayhopdong, id: :nhansu_ngayhopdong %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ngaytuyendung, "Ngày tuyển dụng" %>
+    <%= form.date_field :ngaytuyendung, id: :nhansu_ngaytuyendung %>
+  </div>
+
+  <div class="field">
+    <%= form.label :hethongtuyendung, "Hệ thống tuyển dụng" %>
+    <%= form.text_field :hethongtuyendung, id: :nhansu_hethongtuyendung %>
+  </div>
+
+  <div class="field">
+    <%= form.label :coquantuyendung, "Cơ quan tuyển dụng" %>
+    <%= form.text_field :coquantuyendung, id: :nhansu_coquantuyendung %>
+  </div>
+
+  <div class="field">
+    <%= form.label :congviecduocgiao, "Công việc được giao" %>
+    <%= form.text_field :congviecduocgiao, id: :nhansu_congviecduocgiao %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ngayvecoquanhiennay,"Ngày về cơ quan hiện nay" %>
+    <%= form.date_field :ngayvecoquanhiennay, id: :nhansu_ngayvecoquanhiennay %>
+  </div>
+
+  <div class="field">
+    <%= form.label :thuocloaicanbo, "Thuộc loại cán bộ" %>
+    <%= form.text_field :thuocloaicanbo, id: :nhansu_thuocloaicanbo %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nhomcvhiennay, "Nhóm công việc hiên nay" %>
+    <%= form.text_field :nhomcvhiennay, id: :nhansu_nhomcvhiennay %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dangnghibhxh, "Đang nghỉ bhxh" %>
+    <%= form.check_box :dangnghibhxh, id: :nhansu_dangnghibhxh %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ngayvaonganhgd, "Ngày vào ngành giáo dục" %>
+    <%= form.date_field :ngayvaonganhgd, id: :nhansu_ngayvaonganhgd %>
+  </div>
+
+  <div class="field">
+    <%= form.label :chucvuhientai, "Chức vụ hiện tại" %>
+    <%= form.text_field :chucvuhientai, id: :nhansu_chucvuhientai %>
+  </div>
+
+  <div class="field">
+    <%= form.label :hesophucap, "Hệ số phụ cấp" %>
+    <%= form.text_field :hesophucap, id: :nhansu_hesophucap %>
+  </div>
+
+   <div class="field">
+    <%= form.label :department_id, "Phòng ban hiện tại:" %>
+    <%= collection_select(:nhansu, :department_id, Department.all, :id, :name, { prompt: "Chọn phòng ban" }) %>
+  </div>
+
+
+  <div class="actions">
+    <%= form.submit "Tạo nhân sự" %>
+  </div>
+<% end %>
