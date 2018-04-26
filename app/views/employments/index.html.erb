@@ -1,0 +1,115 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Nhân sư</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Họ tên</th>
+      <th>Ngày Sinh</th>
+      <th>Giới tính</th>
+      <th>Tengoikhac</th>
+      <th>Số hiệu công chức</th>
+      <th>Chứng minh nhân dân</th>
+      <th>Ngaycapcmnd</th>
+      <th>Noicapcmnd</th>
+      <th>Tenxeptkb</th>
+      <th>Dantoc</th>
+      <th>Tongiao</th>
+      <th>Quoctich</th>
+      <th>Noisinh</th>
+      <th>Diachithuongtru</th>
+      <th>Noiohiennay</th>
+      <th>Dtcoquan</th>
+      <th>Dtnharieng</th>
+      <th>Di dộng:</th>
+      <th>Email:</th>
+      <th>Tinhtranghonnhan</th>
+      <th>Thanhphanxuatthan</th>
+      <th>Dienuutiengd</th>
+      <th>Dienuutienbanthan</th>
+      <th>Nangkieu</th>
+      <th>Suckhoe</th>
+      <th>Nhommau</th>
+      <th>Chieucao</th>
+      <th>Cannang</th>
+      <th>Khuyettan</th>
+      <th>Stk</th>
+      <th>Nganhangmotaikhoan</th>
+      <th>Ngaybatdaudongbhxh</th>
+      <th>Sobhxh</th>
+      <th>Ngayhopdong</th>
+      <th>Ngaytuyendung</th>
+      <th>Hethongtuyendung</th>
+      <th>Coquantuyendung</th>
+      <th>Congviecduocgiao</th>
+      <th>Ngayvecoquanhiennay</th>
+      <th>Thuocloaicanbo</th>
+      <th>Nhomcvhiennay</th>
+      <th>Dangnghibhxh</th>
+      <th>Ngayvaonganhgd</th>
+      <th>Chucvuhientai</th>
+      <th>Hesophucap</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @employments.each do |employment| %>
+      <tr>
+        <td><%= employment.hoten %></td>
+        <td><%= employment.ngaysinh %></td>
+        <td><%= employment.gioitinh %></td>
+        <td><%= employment.tengoikhac %></td>
+        <td><%= employment.sohieucongchuc %></td>
+        <td><%= employment.cmnd %></td>
+        <td><%= employment.ngaycapcmnd %></td>
+        <td><%= employment.noicapcmnd %></td>
+        <td><%= employment.tenxeptkb %></td>
+        <td><%= employment.dantoc %></td>
+        <td><%= employment.tongiao %></td>
+        <td><%= employment.quoctich %></td>
+        <td><%= employment.noisinh %></td>
+        <td><%= employment.diachithuongtru %></td>
+        <td><%= employment.noiohiennay %></td>
+        <td><%= employment.dtcoquan %></td>
+        <td><%= employment.dtnharieng %></td>
+        <td><%= employment.dtdd %></td>
+        <td><%= employment.email %></td>
+        <td><%= employment.tinhtranghonnhan %></td>
+        <td><%= employment.thanhphanxuatthan %></td>
+        <td><%= employment.dienuutiengd %></td>
+        <td><%= employment.dienuutienbanthan %></td>
+        <td><%= employment.nangkieu %></td>
+        <td><%= employment.suckhoe %></td>
+        <td><%= employment.nhommau %></td>
+        <td><%= employment.chieucao %></td>
+        <td><%= employment.cannang %></td>
+        <td><%= employment.khuyettan %></td>
+        <td><%= employment.stk %></td>
+        <td><%= employment.nganhangmotaikhoan %></td>
+        <td><%= employment.ngaybatdaudongbhxh %></td>
+        <td><%= employment.sobhxh %></td>
+        <td><%= employment.ngayhopdong %></td>
+        <td><%= employment.ngaytuyendung %></td>
+        <td><%= employment.hethongtuyendung %></td>
+        <td><%= employment.coquantuyendung %></td>
+        <td><%= employment.congviecduocgiao %></td>
+        <td><%= employment.ngayvecoquanhiennay %></td>
+        <td><%= employment.thuocloaicanbo %></td>
+        <td><%= employment.nhomcvhiennay %></td>
+        <td><%= employment.dangnghibhxh %></td>
+        <td><%= employment.ngayvaonganhgd %></td>
+        <td><%= employment.chucvuhientai %></td>
+        <td><%= employment.hesophucap %></td>
+        <td><%= link_to 'Show', employment %></td>
+        <td><%= link_to 'Edit', edit_employment_path(employment) %></td>
+        <td><%= link_to 'Destroy', employment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New employment', new_employment_path %>

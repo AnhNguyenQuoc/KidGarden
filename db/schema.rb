@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180417074122) do
+ActiveRecord::Schema.define(version: 20180426064838) do
 
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string "data_file_name", null: false
@@ -32,6 +32,68 @@ ActiveRecord::Schema.define(version: 20180417074122) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "districts", force: :cascade do |t|
+    t.integer "province_id"
+    t.string "name"
+    t.index ["province_id"], name: "index_districts_on_province_id"
+  end
+
+  create_table "employments", force: :cascade do |t|
+    t.string "hoten"
+    t.datetime "ngaysinh"
+    t.boolean "gioitinh"
+    t.string "tengoikhac"
+    t.integer "sohieucongchuc"
+    t.integer "cmnd"
+    t.datetime "ngaycapcmnd"
+    t.string "noicapcmnd"
+    t.string "tenxeptkb"
+    t.string "dantoc"
+    t.string "tongiao"
+    t.string "quoctich"
+    t.string "noisinh"
+    t.string "diachithuongtru"
+    t.string "noiohiennay"
+    t.integer "dtcoquan"
+    t.integer "dtnharieng"
+    t.integer "dtdd"
+    t.string "email"
+    t.boolean "tinhtranghonnhan"
+    t.string "thanhphanxuatthan"
+    t.string "dienuutiengd"
+    t.string "dienuutienbanthan"
+    t.string "nangkieu"
+    t.string "suckhoe"
+    t.string "nhommau"
+    t.integer "chieucao"
+    t.integer "cannang"
+    t.boolean "khuyettan"
+    t.string "stk"
+    t.string "nganhangmotaikhoan"
+    t.datetime "ngaybatdaudongbhxh"
+    t.string "sobhxh"
+    t.datetime "ngayhopdong"
+    t.datetime "ngaytuyendung"
+    t.string "hethongtuyendung"
+    t.string "coquantuyendung"
+    t.string "congviecduocgiao"
+    t.datetime "ngayvecoquanhiennay"
+    t.string "thuocloaicanbo"
+    t.string "nhomcvhiennay"
+    t.boolean "dangnghibhxh"
+    t.datetime "ngayvaonganhgd"
+    t.string "chucvuhientai"
+    t.float "hesophucap"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "department_id"
+    t.integer "province_id"
+    t.integer "district_id"
+    t.index ["department_id"], name: "index_employments_on_department_id"
+    t.index ["district_id"], name: "index_employments_on_district_id"
+    t.index ["province_id"], name: "index_employments_on_province_id"
+  end
+
   create_table "lops", force: :cascade do |t|
     t.string "khoihoc"
     t.string "lophoc"
@@ -49,8 +111,11 @@ ActiveRecord::Schema.define(version: 20180417074122) do
     t.datetime "updated_at", null: false
   end
 
-# Could not dump table "nhansus" because of following StandardError
-#   Unknown type 'reference' for column 'department_id'
+  create_table "provinces", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false

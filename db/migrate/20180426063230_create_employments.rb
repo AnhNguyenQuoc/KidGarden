@@ -1,6 +1,6 @@
-class CreateNhansus < ActiveRecord::Migration[5.1]
+class CreateEmployments < ActiveRecord::Migration[5.1]
   def change
-    create_table :nhansus do |t|
+    create_table :employments do |t|
       t.string :hoten
       t.datetime :ngaysinh
       t.boolean :gioitinh
@@ -46,7 +46,6 @@ class CreateNhansus < ActiveRecord::Migration[5.1]
       t.datetime :ngayvaonganhgd
       t.string :chucvuhientai
       t.float :hesophucap
-
       t.timestamps
     end
   end

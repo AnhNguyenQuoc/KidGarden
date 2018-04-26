@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :nhansus
+
   resources :lops
-  get 'departments/index'
+
 
   mount Ckeditor::Engine => '/ckeditor'
   resources :news
@@ -18,4 +18,5 @@ Rails.application.routes.draw do
     get '/new_password' => 'devise/passwords#edit'
   end
   resources :departments
+  resources :employments
 end
