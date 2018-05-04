@@ -1,0 +1,47 @@
+<%= form_with(model: khoanphiphaithu, local: true) do |form| %>
+  <% if khoanphiphaithu.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(khoanphiphaithu.errors.count, "error") %> prohibited this khoanphiphaithu from being saved:</h2>
+
+      <ul>
+      <% khoanphiphaithu.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :tendichvu %>
+    <%= form.text_field :tendichvu, id: :khoanphiphaithu_tendichvu %>
+  </div>
+
+  <div class="field">
+    <%= form.label :phidichvu %>
+    <%= form.text_field :phidichvu, id: :khoanphiphaithu_phidichvu %>
+  </div>
+
+  <div class="field">
+    <%= form.label :loaidichvu %>
+    <%= form.text_field :loaidichvu, id: :khoanphiphaithu_loaidichvu %>
+  </div>
+
+  <div class="field">
+    <%= form.label :kieudichvu, "Bat buot" %>
+    <%= form.check_box :kieudichvu, id: :khoanphiphaithu_kieudichvu %>
+  </div>
+
+  <div class="field">
+    <%= form.label :hinhthuc %>
+    <%= form.select :hinhthuc, options_for_select(["Hoc Phi", "Tien An", "Khac"]), :prompt => "Chon hinh thuc" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :lop_id %>
+    <%= form.collection_select :lop_id, Lop.all, :id, :lophoc, :prompt => "Chon lop" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -3,6 +3,8 @@ class Lop < ApplicationRecord
   before_save {self.lophoc = lophoc.downcase}
   has_many :phancongcongviecs
   has_many :students
+  has_many :taisanlops, dependent: :destroy
+  has_many :khoanphiphaithus, dependent: :destroy
   VALID_LOPHOC = /(chồi|mầm|lá)? [0-9]+/
 
   validates :khoihoc, presence: true, length: {minimum: 6}

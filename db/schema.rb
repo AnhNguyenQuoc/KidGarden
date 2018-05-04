@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180504081017) do
+ActiveRecord::Schema.define(version: 20180504091800) do
 
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string "data_file_name", null: false
@@ -93,6 +93,18 @@ ActiveRecord::Schema.define(version: 20180504081017) do
     t.index ["province_id"], name: "index_employments_on_province_id"
   end
 
+  create_table "khoanphiphaithus", force: :cascade do |t|
+    t.string "tendichvu"
+    t.decimal "phidichvu"
+    t.string "loaidichvu"
+    t.boolean "kieudichvu"
+    t.string "hinhthuc"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "lop_id"
+    t.index ["lop_id"], name: "index_khoanphiphaithus_on_lop_id"
+  end
+
   create_table "lops", force: :cascade do |t|
     t.string "khoihoc"
     t.string "lophoc"
@@ -146,6 +158,17 @@ ActiveRecord::Schema.define(version: 20180504081017) do
     t.datetime "updated_at", null: false
     t.integer "lop_id"
     t.index ["lop_id"], name: "index_students_on_lop_id"
+  end
+
+  create_table "taisanlops", force: :cascade do |t|
+    t.string "tentaisan"
+    t.string "donvitaisan"
+    t.string "nguontaisan"
+    t.integer "soluong"
+    t.integer "lop_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lop_id"], name: "index_taisanlops_on_lop_id"
   end
 
   create_table "users", force: :cascade do |t|

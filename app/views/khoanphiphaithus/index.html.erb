@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Khoanphiphaithus</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Tendichvu</th>
+      <th>Phidichvu</th>
+      <th>Loaidichvu</th>
+      <th>Kieudichvu</th>
+      <th>Hinhthuc</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @khoanphiphaithus.each do |khoanphiphaithu| %>
+      <tr>
+        <td><%= khoanphiphaithu.tendichvu %></td>
+        <td><%= khoanphiphaithu.phidichvu %></td>
+        <td><%= khoanphiphaithu.loaidichvu %></td>
+        <td><%= khoanphiphaithu.kieudichvu %></td>
+        <td><%= khoanphiphaithu.hinhthuc %></td>
+        <td><%= link_to 'Show', khoanphiphaithu %></td>
+        <td><%= link_to 'Edit', edit_khoanphiphaithu_path(khoanphiphaithu) %></td>
+        <td><%= link_to 'Destroy', khoanphiphaithu, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Khoanphiphaithu', new_khoanphiphaithu_path %>
