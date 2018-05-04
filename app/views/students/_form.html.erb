@@ -1,0 +1,105 @@
+<%= form_with(model: student, local: true) do |form| %>
+  <% if student.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(student.errors.count, "error") %> prohibited this student from being saved:</h2>
+
+      <ul>
+      <% student.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :hoten %>
+    <%= form.text_field :hoten, id: :student_hoten %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ngaysinh %>
+    <%= form.date_field  :ngaysinh, id: :student_ngaysinh %>
+  </div>
+
+  <div class="field">
+    <%= form.label :gioitinh, "Giới tính"%>
+    <%= form.label :gioitinh, "Nam"%>
+    <%= form.radio_button :gioitinh, true %>
+    <%= form.label :gioitinh, "Nữ"%>
+    <%= form.radio_button :gioitinh, false %>
+  </div>
+
+  <div class="field">
+    <%= form.label :choohientai %>
+    <%= form.text_field :choohientai, id: :student_choohientai %>
+  </div>
+
+  <div class="field">
+    <%= form.label :hokhauthuongtru %>
+    <%= form.text_field :hokhauthuongtru, id: :student_hokhauthuongtru %>
+  </div>
+
+  <div class="field">
+    <%= form.label :noisinh %>
+    <%= form.text_field :noisinh, id: :student_noisinh %>
+  </div>
+
+  <div class="field">
+    <%= form.label :quequan %>
+    <%= form.text_field :quequan, id: :student_quequan %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dantoc %>
+    <%= form.text_field :dantoc, id: :student_dantoc %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dienchinhsach %>
+    <%= form.text_field :dienchinhsach, id: :student_dienchinhsach %>
+  </div>
+
+  <div class="field">
+    <%= form.label :canngheo %>
+    <%= form.check_box :canngheo, id: :student_canngheo %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tencha %>
+    <%= form.text_field :tencha, id: :student_tencha %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nghenghiepcha %>
+    <%= form.text_field :nghenghiepcha, id: :student_nghenghiepcha %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dienthoaibo %>
+    <%= form.number_field :dienthoaibo, id: :student_dienthoaibo %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tenme %>
+    <%= form.text_field :tenme, id: :student_tenme %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nghenghiepme %>
+    <%= form.text_field :nghenghiepme, id: :student_nghenghiepme %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dienthoaime %>
+    <%= form.number_field :dienthoaime, id: :student_dienthoaime %>
+  </div>
+
+  <div class="field">
+    <%= form.label :lop_id %>
+    <%= form.collection_select :lop_id, Lop.all, :id, :lophoc, :prompt => "Chon lop hoc" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

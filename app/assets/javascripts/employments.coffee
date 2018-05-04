@@ -2,7 +2,6 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 jQuery ->
-    $("select[name='employment[district_id]']").parent().hide()
     district = $("select[name='employment[district_id]']").html()
     $('#employment_province_id').change ->
         province = $('#employment_province_id :selected').text()

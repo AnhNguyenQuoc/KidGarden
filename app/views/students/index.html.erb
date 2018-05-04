@@ -1,0 +1,57 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Students</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Hoten</th>
+      <th>Ngaysinh</th>
+      <th>Gioitinh</th>
+      <th>Choohientai</th>
+      <th>Hokhauthuongtru</th>
+      <th>Noisinh</th>
+      <th>Quequan</th>
+      <th>Dantoc</th>
+      <th>Dienchinhsach</th>
+      <th>Canngheo</th>
+      <th>Tencha</th>
+      <th>Nghenghiepcha</th>
+      <th>Dienthoaibo</th>
+      <th>Tenme</th>
+      <th>Nghenghiepme</th>
+      <th>Dienthoaime</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @students.each do |student| %>
+      <tr>
+        <td><%= student.hoten %></td>
+        <td><%= student.ngaysinh %></td>
+        <td><%= student.gioitinh %></td>
+        <td><%= student.choohientai %></td>
+        <td><%= student.hokhauthuongtru %></td>
+        <td><%= student.noisinh %></td>
+        <td><%= student.quequan %></td>
+        <td><%= student.dantoc %></td>
+        <td><%= student.dienchinhsach %></td>
+        <td><%= student.canngheo %></td>
+        <td><%= student.tencha %></td>
+        <td><%= student.nghenghiepcha %></td>
+        <td><%= student.dienthoaibo %></td>
+        <td><%= student.tenme %></td>
+        <td><%= student.nghenghiepme %></td>
+        <td><%= student.dienthoaime %></td>
+        <td><%= link_to 'Show', student %></td>
+        <td><%= link_to 'Edit', edit_student_path(student) %></td>
+        <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Student', new_student_path %>

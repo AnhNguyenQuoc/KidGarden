@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180426064838) do
+ActiveRecord::Schema.define(version: 20180504081017) do
 
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string "data_file_name", null: false
@@ -76,7 +76,6 @@ ActiveRecord::Schema.define(version: 20180426064838) do
     t.datetime "ngaytuyendung"
     t.string "hethongtuyendung"
     t.string "coquantuyendung"
-    t.string "congviecduocgiao"
     t.datetime "ngayvecoquanhiennay"
     t.string "thuocloaicanbo"
     t.string "nhomcvhiennay"
@@ -111,10 +110,42 @@ ActiveRecord::Schema.define(version: 20180426064838) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "phanconggiangdays", force: :cascade do |t|
+    t.integer "lop_id"
+    t.integer "employment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["employment_id"], name: "index_phanconggiangdays_on_employment_id"
+    t.index ["lop_id"], name: "index_phanconggiangdays_on_lop_id"
+  end
+
   create_table "provinces", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "students", force: :cascade do |t|
+    t.string "hoten"
+    t.datetime "ngaysinh"
+    t.boolean "gioitinh"
+    t.string "choohientai"
+    t.string "hokhauthuongtru"
+    t.string "noisinh"
+    t.string "quequan"
+    t.string "dantoc"
+    t.string "dienchinhsach"
+    t.boolean "canngheo"
+    t.string "tencha"
+    t.string "nghenghiepcha"
+    t.integer "dienthoaibo"
+    t.string "tenme"
+    t.string "nghenghiepme"
+    t.integer "dienthoaime"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "lop_id"
+    t.index ["lop_id"], name: "index_students_on_lop_id"
   end
 
   create_table "users", force: :cascade do |t|

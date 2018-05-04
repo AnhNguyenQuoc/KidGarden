@@ -199,10 +199,11 @@
     <%= form.text_field :coquantuyendung, id: :employment_coquantuyendung %>
   </div>
 
-  <div class="field">
+  <!-- <div class="field">
     <%= form.label :congviecduocgiao, "Công việc được giao" %>
     <%= form.text_field :congviecduocgiao, id: :employment_congviecduocgiao %>
   </div>
+  -->
 
   <div class="field">
     <%= form.label :ngayvecoquanhiennay,"Ngày về cơ quan hiện nay" %>
@@ -250,8 +251,8 @@
   </div>
 
   <div class="field" id="district_select">
-    <%= form.label :district_id, "Chọn nơi ở:" %>
-    <%= form.grouped_collection_select :district_id, Province.all, :districts, :name, :id, :name, include_blank: true%>
+    <%= form.label :district_id, "Chọn Huyện:" %>
+    <%= form.grouped_collection_select :district_id, Province.all, :districts, :name, :id, :name, prompt: "Chọn Huyện"%>
   </div>
 
 

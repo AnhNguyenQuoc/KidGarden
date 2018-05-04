@@ -1,0 +1,27 @@
+<%= form_with(model: phanconggiangday, local: true) do |form| %>
+  <% if phanconggiangday.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(phanconggiangday.errors.count, "error") %> prohibited this phanconggiangday from being saved:</h2>
+
+      <ul>
+      <% phanconggiangday.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :lop_id %>
+    <%= form.collection_select :lop_id, Lop.all, :id, :lophoc, prompt: 'Select', id: :phanconggiangday_lop_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :employment_id %>
+    <%= form.collection_select :employment_id,Employment.all, :id, :hoten, prompt:'Select', id: :phanconggiangday_employment_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
