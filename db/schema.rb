@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180504091800) do
+ActiveRecord::Schema.define(version: 20180505092051) do
 
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string "data_file_name", null: false
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 20180504091800) do
     t.string "nhommau"
     t.integer "chieucao"
     t.integer "cannang"
-    t.boolean "khuyettan"
+    t.string "khuyettan"
     t.string "stk"
     t.string "nganhangmotaikhoan"
     t.datetime "ngaybatdaudongbhxh"

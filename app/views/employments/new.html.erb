@@ -1,6 +1,30 @@
-<h1>New Nhansu</h1>
+<body class="fix-header fix-sidebar card-no-border">
 
-<%= render 'form', nhansu: @employment %>
+<%= render 'layouts/admin_header' %>
+<div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                <div class="row page-titles">
+                    <div class="col-md-5 align-self-center">
+                        <h3 class="text-themecolor">Chỉnh sửa quản lý lớp học</h3>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="javascript:void(0)">Trang chủ</a>
+                            </li>
+                            <li class="breadcrumb-item active">Chỉnh sửa quản lý lớp học</li>
+                        </ol>
+                    </div>
+                </div>
+                <%= render 'form', nhansu: @employment %>
+                <%= link_to 'Back', employments_path %>
+            </div>
+    </div>
+<%= render 'layouts/admin_footer' %>
 
-<%= link_to 'Back', employments_path %>
 
+</body>

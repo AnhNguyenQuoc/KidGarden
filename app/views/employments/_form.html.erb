@@ -1,262 +1,343 @@
 <%= form_with(model: @employment, local: true) do |form| %>
-  <% if  @employment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(employment.errors.count, "error") %> prohibited this employment from being saved:</h2>
+      <div class="row">
+        <div class="col-12">
+          <div class="card card-outline-inverse">
+            <div class="card-header white">
+              Thông Tin Cá Nhân
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <%= form.label :hoten, "Họ Tên" %>
+                      <span style="color: red"> *</span>
+                      <%= form.text_field :hoten, :class => "form-control" %>
+                      <%= error_log(@employment, :hoten)%>
+                  </div>
 
-      <ul>
-      <%  @employment.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+                  <div class="form-group">
+                    <%= form.label :ngaysinh, "Ngày sinh" %>
+                      <%= form.date_field :ngaysinh, :class => 'form-control' %>
+                      <%= error_log(@employment, :ngaysinh) %>
+                  </div>
 
-  <div class="field">
-    <%= form.label :hoten, "Họ Tên" %>
-    <%= form.text_field :hoten, id: :employment_hoten %>
-  </div>
+                  <div class="form-group">
+                    <%= form.label :gioitinh, "Giới tính"%>
+                      <span style="color: red"> *</span>
+                      <%= form.label :gioitinh, "Nam", :class => "radio-inline"%>
+                        <%= form.radio_button :gioitinh, true %>
+                          <%= form.label :gioitinh, "Nữ", :class => "radio-inline"%>
+                            <%= form.radio_button :gioitinh, false %>
+                            <%= error_log(@employment, :gioitinh) %>
+                  </div>
 
-  <div class="field">
-    <%= form.label :ngaysinh, "Ngày sinh" %>
-    <%= form.date_field :ngaysinh, id: :employment_ngaysinh %>
-  </div>
+                  <div class="form-group">
+                    <%= form.label :tengoikhac, "Tên gọi khác" %>
+                      <%= form.text_field :tengoikhac, :class => 'form-control' %>
+                      <%= error_log(@employment, :tengoikhac) %>
+                  </div>
 
-  <div class="field">
-    <%= form.label :gioitinh, "Giới tính"%>
-    <%= form.label :gioitinh, "Nam"%>
-    <%= form.radio_button :gioitinh, true %>
-    <%= form.label :gioitinh, "Nữ"%>
-    <%= form.radio_button :gioitinh, false %>
-  </div>
+                  <div class="form-group">
+                    <%= form.label :noisinh, "Nơi sinh" %>
+                      <span style="color: red"> *</span>
+                      <%= form.text_field :noisinh, :class => 'form-control' %>
+                      <%= error_log(@employment, :noisinh) %>
+                  </div>
 
-  <div class="field">
-    <%= form.label :tengoikhac, "Tên gọi khác" %>
-    <%= form.text_field :tengoikhac, id: :employment_tengoikhac %>
-  </div>
+                  <div class="form-group">
+                    <%= form.label :cmnd, "Chức minh nhân dân" %>
+                      <%= form.text_field :cmnd, :class => 'form-control' %>
+                      <%= error_log(@employment, :cmnd) %>
+                  </div>
 
-  <div class="field">
-    <%= form.label :sohieucongchuc, "Số hiệu công chức" %>
-    <%= form.number_field :sohieucongchuc, id: :employment_sohieucongchuc %>
-  </div>
+                  <div class="form-group">
+                    <%= form.label :ngaycapcmnd, "Ngày cấp cmnd" %>
+                      <%= form.date_field :ngaycapcmnd, :class => 'form-control' %>
+                    <%= error_log(@employment, :ngaycapcmnd) %>
+                  </div>
 
-  <div class="field">
-    <%= form.label :cmnd, "Chức minh nhân dân" %>
-    <%= form.number_field :cmnd, id: :employment_cmnd %>
-  </div>
+                  <div style="padding: 0px 5px 0px 0px" class="col-lg-6">
+                    <div class="form-group">
+                      <%= form.label :noicapcmnd, "Nơi cấp cmnd" %>
+                        <%= form.collection_select :noicapcmnd, Province.all, :name, :name, :class => 'form-control' %>
+                       <%= error_log(@employment, :noicapcmnd) %>
+                    </div>
+                  </div>
 
-  <div class="field">
-    <%= form.label :ngaycapcmnd, "Ngày cấp cmnd" %>
-    <%= form.date_field :ngaycapcmnd, id: :employment_ngaycapcmnd %>
-  </div>
+                  <div class="form-group">
+                    <label>Quê Quán</label>
+                    <br>
+                    <%= form.collection_select :province_id, Province.all, :id, :name, { prompt: "Chọn Tỉnh:" }, :class => "form-control", :style => "display: inline-block; width: 32.5%",
+                                              id: :employment_province_id %>
+                    <%= error_log(@employment, :province_id) %>
+                    <%= form.grouped_collection_select :district_id, Province.all, :districts, :name, :id, :name, { prompt: "Chọn Huyện" }, 
+                                                        {:class => "form-control", :style => "display: inline-block; width: 32.5%"} %>                               
+                      <%= error_log(@employment, :district_id) %>   
+                  </div>
+                  
+                  <div class="form-group">
+                    <%= form.label :sohieucongchuc, "Số hiệu công chức" %>
+                      <%= form.text_field :sohieucongchuc, :class => 'form-control' %>
+                     <%= error_log(@employment, :sohieucongchuc) %>
+                  </div>
 
-  <div class="field">
-    <%= form.label :noicapcmnd, "Nơi cấp cmnd" %>
-    <%= form.text_field :noicapcmnd, id: :employment_noicapcmnd %>
-  </div>
+                  <div class="form-group">
+                    <%= form.label :diachithuongtru, "Địa chỉ thường trú" %>
+                      <span style="color: red"> *</span>
+                      <%= form.text_field :diachithuongtru, :class => 'form-control' %>
+                     <%= error_log(@employment, :diachithuongtru) %>
+                  </div>
 
-  <div class="field">
-    <%= form.label :tenxeptkb, "Tên xếp tkb" %>
-    <%= form.text_field :tenxeptkb, id: :employment_tenxeptkb %>
-  </div>
+                  <div class="form-group">
+                    <%= form.label :noiohiennay, "Nơi ở hiện nay" %>
+                      <span style="color: red"> *</span>
+                      <%= form.text_field :noiohiennay, :class => 'form-control' %>
+                     <%= error_log(@employment, :noiohiennay) %>
+                  </div>
 
-  <div class="field">
-    <%= form.label :dantoc, "Dân tộc" %>
-    <%= form.text_field :dantoc, id: :employment_dantoc %>
-  </div>
+                  <div class="form-group">
+                    <%= form.label :dantoc, "Dân tộc" %>
+                      <%= form.text_field :dantoc, :class => 'form-control'%>
+                     <%= error_log(@employment, :dantoc) %>
+                  </div>
 
-  <div class="field">
-    <%= form.label :tongiao, "Tôn giáo" %>
-    <%= form.text_field :tongiao, id: :employment_tongiao %>
-  </div>
+                  <div class="form-group">
+                    <%= form.label :tongiao, "Tôn giáo" %>
+                      <%= form.text_field :tongiao, :class => 'form-control' %>
+                     <%= error_log(@employment, :tongiao) %>
+                  </div>
 
-  <div class="field">
-    <%= form.label :quoctich, "Quốc tịch" %>
-    <%= form.text_field :quoctich, id: :employment_quoctich %>
-  </div>
+                  <div class="form-group">
+                    <%= form.label :quoctich, "Quốc tịch" %>
+                      <%= form.text_field :quoctich, :class => 'form-control' %>
+                     <%= error_log(@employment, :quoctich) %>
+                  </div>
+                </div>
 
-  <div class="field">
-    <%= form.label :noisinh, "Nơi sinh" %>
-    <%= form.text_field :noisinh, id: :employment_noisinh %>
-  </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <%= form.label :tenxeptkb, "Tên xếp tkb" %>
+                      <%= form.text_field :tenxeptkb, :class => 'form-control' %>
+                     <%= error_log(@employment, :tenxeptkb) %>
+                  </div>
 
-  <div class="field">
-    <%= form.label :diachithuongtru, "Địa chỉ thường trú" %>
-    <%= form.text_field :diachithuongtru, id: :employment_diachithuongtru %>
-  </div>
+                  <div class="form-group">
+                    <span style="color: red"> *</span>
+                    <%= form.label :tinhtranghonnhan, "Đã kết hôn", :class => "radio-inline"%>
+                      <%= form.radio_button :tinhtranghonnhan, true %>
+                        <%= form.label :tinhtranghonnhan, "Độc thân", :class => "radio-inline"%>
+                          <%= form.radio_button :tinhtranghonnhan, false %>
+                     <%= error_log(@employment, :tinhtranghonnhan) %>
+                  </div>
 
-  <div class="field">
-    <%= form.label :noiohiennay, "Nơi ở hiện nay" %>
-    <%= form.text_field :noiohiennay, id: :employment_noiohiennay %>
-  </div>
+                  <div class="form-group">
+                    <%= form.label :thanhphanxuatthan, "Thành phần xuất thân" %>
+                      <%= form.text_field :thanhphanxuatthan, :class => 'form-control' %>
+                     <%= error_log(@employment, :thanhphanxuatthan) %>
+                  </div>
 
-  <div class="field">
-    <%= form.label :dtcoquan, "Điện thoại cơ quan" %>
-    <%= form.number_field :dtcoquan, id: :employment_dtcoquan %>
-  </div>
+                  <div class="form-group">
+                    <%= form.label :dienuutiengd, "Diện ưu tiên gia định" %>
+                      <%= form.text_field :dienuutiengd, :class => 'form-control' %>
+                     <%= error_log(@employment, :dienuutiengd) %>
+                  </div>
 
-  <div class="field">
-    <%= form.label :dtnharieng, "Điện thoại nhà riêng" %>
-    <%= form.number_field :dtnharieng, id: :employment_dtnharieng %>
-  </div>
+                  <div class="form-group">
+                    <%= form.label :dienuutienbanthan, "Diện ưu tiên bản thân" %>
+                      <%= form.text_field :dienuutienbanthan, :class => 'form-control' %>
+                     <%= error_log(@employment, :dienuutienbanthan) %>
+                  </div>
 
-  <div class="field">
-    <%= form.label :dtdd, "Điện thoại di động" %>
-    <%= form.number_field :dtdd, id: :employment_dtdd %>
-  </div>
+                  <div class="form-group">
+                    <%= form.label :nangkieu, "Năng kiếu" %>
+                      <%= form.text_field :nangkieu, :class => 'form-control' %>
+                     <%= error_log(@employment, :nangkieu) %>
+                  </div>
 
-  <div class="field">
-    <%= form.label :email, "Email" %>
-    <%= form.text_field :email, id: :employment_email %>
-  </div>
+                  <div class="form-group">
+                    <%= form.label :suckhoe, "Sức khỏe" %>
+                      <%= form.text_field :suckhoe, :class => 'form-control' %>
+                     <%= error_log(@employment, :suckhoe) %>
+                  </div>
 
-  <div class="field">
-    <%= form.label :tinhtranghonnhan, "Tình trạng hôn nhân" %>
-    <%= form.check_box :tinhtranghonnhan, id: :tinhtranghonnhan%>
-  </div>
+                  <div style="display: inline-block; width: 32.5%" class="form-group">
+                    <%= form.label :nhommau, "Nhóm máu" %>
+                      <%= form.select :nhommau, options_for_select(["A", "B", "AB", "O"]), :class => 'form-control' %>
+                      <%= error_log(@employment, :nhommau) %>
+                  </div>
 
-  <div class="field">
-    <%= form.label :thanhphanxuatthan, "Thành phần xuất thân" %>
-    <%= form.text_field :thanhphanxuatthan, id: :employment_thanhphanxuatthan %>
-  </div>
+                  <div style="display: inline-block; width: 32.5%" class="form-group">
+                    <%= form.label :chieucao, "Chiều cao (cm)" %>
+                      <%= form.text_field :chieucao, :class => 'form-control' %>
+                      <%= error_log(@employment, :chieucao) %>
+                  </div>
 
-  <div class="field">
-    <%= form.label :dienuutiengd, "Diện ưu tiên gia định" %>
-    <%= form.text_field :dienuutiengd, id: :employment_dienuutiengd %>
-  </div>
+                  <div style="display: inline-block; width: 32.5%" class="form-group">
+                    <%= form.label :cannang, "Cân nặng (kg)" %>
+                      <%= form.text_field :cannang, :class => 'form-control' %>
+                    <%= error_log(@employment, :cannang) %>
+                  </div>
 
-  <div class="field">
-    <%= form.label :dienuutienbanthan, "Diện ưu tiên bản thân" %>
-    <%= form.text_field :dienuutienbanthan, id: :employment_dienuutienbanthan %>
-  </div>
+                  <div class="form-check form-check-inline">
+                    <%= form.label :khuyettan, "Khuyết tật" %>
+                      <%= form.check_box :khuyettan, :class => 'form-control'%>
+                    <%= error_log(@employment, :khuyettan) %>
+                  </div>
 
-  <div class="field">
-    <%= form.label :nangkieu, "Năng kiếu" %>
-    <%= form.text_field :nangkieu, id: :employment_nangkieu %>
-  </div>
+                  <div class="form-group">
+                    <%= form.label :stk, "Số tài khoản" %>
+                      <%= form.text_field :stk, :class => 'form-control' %>
+                      <%= error_log(@employment, :stk) %>
+                  </div>
 
-  <div class="field">
-    <%= form.label :suckhoe, "Sức khỏe" %>
-    <%= form.text_field :suckhoe, id: :employment_suckhoe %>
-  </div>
+                  <div class="form-group">
+                    <%= form.label :nganhangmotaikhoan, "Ngân hàng tài khoản" %>
+                      <%= form.text_field :nganhangmotaikhoan, :class => 'form-control' %>
+                      <%= error_log(@employment, :nganhangmotaikhoan) %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card card-out-line-inverse">
+            <div class="card-header white">
+              Thông Tin Liên Hệ
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <%= form.label :dtnharieng, "Điện thoại nhà riêng" %>
+                      <%= form.text_field :dtnharieng, :class => 'form-control' %>
+                      <%= error_log(@employment, :dtnharieng) %>
+                  </div>
 
-  <div class="field">
-    <%= form.label :nhommau, "Nhóm máu" %>
-    <%= form.text_field :nhommau, id: :employment_nhommau %>
-  </div>
+                  <div class="form-group">
+                    <%= form.label :dtdd, "Điện thoại di động" %>
+                      <%= form.text_field :dtdd, :class => 'form-control' %>
+                      <%= error_log(@employment, :dtdd) %>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <%= form.label :email, "Email" %>
+                      <%= form.email_field :email, :class => 'form-control' %>
+                      <%= error_log(@employment, :email) %>
+                  </div>
 
-  <div class="field">
-    <%= form.label :chieucao, "Chiều cao" %>
-    <%= form.number_field :chieucao, id: :employment_chieucao %>
-  </div>
+                  <div class="form-group">
+                    <%= form.label :dtcoquan, "Điện thoại cơ quan" %>
+                      <%= form.text_field :dtcoquan, :class => 'form-control' %>
+                    <%= error_log(@employment, :dtcoquan) %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-  <div class="field">
-    <%= form.label :cannang, "Cân nặng" %>
-    <%= form.number_field :cannang, id: :employment_cannang %>
-  </div>
+          <div class="card card-outline-inverse">
+            <div class="card-header white">
+              Thông Tin Làm Việc
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <%= form.label :chucvuhientai, "Chức vụ hiện tại" %>
+                      <%= form.text_field :chucvuhientai, :class => 'form-control'%>
+                      <%= error_log(@employment, :chucvuhientai) %>
+                  </div>
 
-  <div class="field">
-    <%= form.label :khuyettan, "Khuyết tật" %>
-    <%= form.check_box :khuyettan, id: :employment_khuyettan, value: true %>
-  </div>
+                  <div class="form-group">
+                    <%= form.label :hesophucap, "Hệ số phụ cấp" %>
+                      <%= form.text_field :hesophucap, :class => 'form-control' %>
+                      <%= error_log(@employment, :hesophucap) %>
+                  </div>
 
-  <div class="field">
-    <%= form.label :stk, "Số tài khoản" %>
-    <%= form.text_field :stk, id: :employment_stk %>
-  </div>
+                  <div class="form-group">
+                    <%= form.label :thuocloaicanbo, "Thuộc loại cán bộ" %>
+                      <%= form.text_field :thuocloaicanbo, :class => 'form-control' %>
+                      <%= error_log(@employment, :thuocloaicanbo) %>
+                  </div>
 
-  <div class="field">
-    <%= form.label :nganhangmotaikhoan, "Ngân hàng tài khoản" %>
-    <%= form.text_field :nganhangmotaikhoan, id: :employment_nganhangmotaikhoan %>
-  </div>
+                  <div class="form-group">
+                    <%= form.label :ngayvaonganhgd, "Ngày vào ngành giáo dục" %>
+                      <%= form.date_field :ngayvaonganhgd, :class => 'form-control'%>
+                      <%= error_log(@employment, :ngayvaonganhgd) %>
+                  </div>
 
-  <div class="field">
-    <%= form.label :ngaybatdaudongbhxh, "Ngày bắt đầu đóng bhxh" %>
-    <%= form.date_field :ngaybatdaudongbhxh, id: :employment_ngaybatdaudongbhxh %>
-  </div>
+                  <div class="form-group">
+                    <%= form.label :sobhxh, "Số bảo hiểm xã hội" %>
+                      <%= form.text_field :sobhxh, :class => 'form-control' %>
+                      <%= error_log(@employment, :sobhxh) %>
+                  </div>
 
-  <div class="field">
-    <%= form.label :sobhxh, "Số bảo hiểm xã hội" %>
-    <%= form.text_field :sobhxh, id: :employment_sobhxh %>
-  </div>
+                  <div class="form-group">
+                    <%= form.label :ngaybatdaudongbhxh, "Ngày bắt đầu đóng bhxh" %>
+                      <%= form.date_field :ngaybatdaudongbhxh, :class => 'form-control' %>
+                    <%= error_log(@employment, :ngaybatdaudongbhxh) %>
+                  </div>
 
-  <div class="field">
-    <%= form.label :ngayhopdong, "Ngày hợp đồng" %>
-    <%= form.date_field :ngayhopdong, id: :employment_ngayhopdong %>
-  </div>
+                  <div class="form-group">
+                    <%= form.label :dangnghibhxh, "Đang nghỉ bhxh" %>
+                      <%= form.check_box :dangnghibhxh %>
+                      <%= error_log(@employment, :dangnghibhxh) %>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <%= form.label :ngayhopdong, "Ngày hợp đồng" %>
+                      <%= form.date_field :ngayhopdong, :class => 'form-control' %>
+                      <%= error_log(@employment, :ngayhopdong) %>
+                  </div>
+                  <div class="form-group">
+                    <%= form.label :ngaytuyendung, "Ngày tuyển dụng" %>
+                      <%= form.date_field :ngaytuyendung, :class => 'form-control' %>
+                      <%= error_log(@employment, :ngaytuyendung) %>
+                  </div>
+                  <div class="form-group">
+                    <%= form.label :hethongtuyendung, "Hệ thống tuyển dụng" %>
+                      <%= form.text_field :hethongtuyendung, :class => 'form-control' %>
+                      <%= error_log(@employment, :hethongtuyendung) %>
+                  </div>
 
-  <div class="field">
-    <%= form.label :ngaytuyendung, "Ngày tuyển dụng" %>
-    <%= form.date_field :ngaytuyendung, id: :employment_ngaytuyendung %>
-  </div>
-
-  <div class="field">
-    <%= form.label :hethongtuyendung, "Hệ thống tuyển dụng" %>
-    <%= form.text_field :hethongtuyendung, id: :employment_hethongtuyendung %>
-  </div>
-
-  <div class="field">
-    <%= form.label :coquantuyendung, "Cơ quan tuyển dụng" %>
-    <%= form.text_field :coquantuyendung, id: :employment_coquantuyendung %>
-  </div>
-
-  <!-- <div class="field">
+                  <div class="form-group">
+                    <%= form.label :coquantuyendung, "Cơ quan tuyển dụng" %>
+                      <%= form.text_field :coquantuyendung, :class => 'form-control' %>
+                      <%= error_log(@employment, :coquantuyendung) %>
+                  </div>
+                              <!-- <div class="form-group">
     <%= form.label :congviecduocgiao, "Công việc được giao" %>
     <%= form.text_field :congviecduocgiao, id: :employment_congviecduocgiao %>
   </div>
   -->
 
-  <div class="field">
-    <%= form.label :ngayvecoquanhiennay,"Ngày về cơ quan hiện nay" %>
-    <%= form.date_field :ngayvecoquanhiennay, id: :employment_ngayvecoquanhiennay %>
-  </div>
+                  <div class="form-group">
+                    <%= form.label :ngayvecoquanhiennay,"Ngày về cơ quan hiện nay" %>
+                      <%= form.date_field :ngayvecoquanhiennay, :class => 'form-control' %>
+                      <%= error_log(@employment, :ngayvecoquanhiennay) %>
+                  </div>
 
-  <div class="field">
-    <%= form.label :thuocloaicanbo, "Thuộc loại cán bộ" %>
-    <%= form.text_field :thuocloaicanbo, id: :employment_thuocloaicanbo %>
-  </div>
+                  <div class="form-group">
+                    <%= form.label :nhomcvhiennay, "Nhóm công việc hiên nay" %>
+                      <%= form.text_field :nhomcvhiennay, :class => 'form-control' %>
+                      <%= error_log(@employment, :nhomcvhiennay) %>
+                  </div>
 
-  <div class="field">
-    <%= form.label :nhomcvhiennay, "Nhóm công việc hiên nay" %>
-    <%= form.text_field :nhomcvhiennay, id: :employment_nhomcvhiennay %>
-  </div>
-
-  <div class="field">
-    <%= form.label :dangnghibhxh, "Đang nghỉ bhxh" %>
-    <%= form.check_box :dangnghibhxh, id: :employment_dangnghibhxh %>
-  </div>
-
-  <div class="field">
-    <%= form.label :ngayvaonganhgd, "Ngày vào ngành giáo dục" %>
-    <%= form.date_field :ngayvaonganhgd, id: :employment_ngayvaonganhgd %>
-  </div>
-
-  <div class="field">
-    <%= form.label :chucvuhientai, "Chức vụ hiện tại" %>
-    <%= form.text_field :chucvuhientai, id: :employment_chucvuhientai %>
-  </div>
-
-  <div class="field">
-    <%= form.label :hesophucap, "Hệ số phụ cấp" %>
-    <%= form.text_field :hesophucap, id: :employment_hesophucap %>
-  </div>
-
-   <div class="field">
-    <%= form.label :department_id, "Phòng ban hiện tại:" %>
-    <%= collection_select(:employment, :department_id, Department.all, :id, :name, { prompt: "Chọn phòng ban" }) %>
-  </div>
-
-  <div class="field">
-    <%= form.label :province_id, "Chọn tỉnh:" %>
-    <%= collection_select(:employment, :province_id, Province.all, :id, :name, { prompt: "Chọn Tỉnh:" }) %>
-  </div>
-
-  <div class="field" id="district_select">
-    <%= form.label :district_id, "Chọn Huyện:" %>
-    <%= form.grouped_collection_select :district_id, Province.all, :districts, :name, :id, :name, prompt: "Chọn Huyện"%>
-  </div>
+                  <div class="form-group">
+                    <%= form.label :department_id, "Phòng ban hiện tại:" %>
+                      <%= collection_select(:employment, :department_id, Department.all, :id, :name, { prompt: "Chọn phòng ban" },
+                              :class => 'form-control') %>
+                      <%= error_log(@employment, :department_id) %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
 
-  <div class="actions">
-    <%= form.submit "Tạo nhân sự" %>
-  </div>
-<% end %>
+          <div style="float: right !important;">
+            <button type="reset" class="btn btn-default">Nhập Lại</button>
+            <%= form.submit "Tạo nhân sự", :class => 'btn btn-primary' %>
+          </div>
+          <% end %>
