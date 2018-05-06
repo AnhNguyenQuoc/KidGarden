@@ -69,6 +69,6 @@ class LopsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lop_params
-      params.require(:lop).permit(:khoihoc, :lophoc, :syso, :department_id)
+      params.require(:lop).permit(:khoihoc, :lophoc, :syso, :department_id, :namhoc, phanconggiangday: [:employment_id])
     end
 end

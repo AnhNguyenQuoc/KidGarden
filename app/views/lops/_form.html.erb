@@ -1,35 +1,67 @@
-<%= form_with(model: lop, local: true) do |form| %>
-  <% if lop.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(lop.errors.count, "error") %> prohibited this lop from being saved:</h2>
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header bg-info">
+        <h4 class="m-b-0 text-white">Thông tin lớp</h4>
+      </div>
+      <div class="card-body">
+        <%= form_with(model: lop, local: true) do |form| %>
+          <div class="form-body">
+            <div class="row p-t-20">
+              <div class="col-md-6 offset-md-3">
+                <div class="form-group">
+                  <%= form.label :lophoc, "Lớp học" %>
+                    <%= form.text_field :lophoc, id: :firstName, :class => 'form-control' %>
+                    <%= error_log(lop, :lophoc) %>
+                </div>
+              </div>
 
-      <ul>
-      <% lop.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+              <div class="col-md-6 offset-md-3">
+                <div class="form-group">
+                  <%= form.label :khoihoc, "Khối học" %>
+                    <%= form.select :khoihoc, options_for_select(["15 - 24 Tháng", "25 - 36 Tháng", "Mầm", "Chồi", "Lá"]), prompt: "Chọn khối...", :class => 'form-control' %>
+                    <%= error_log(lop, :khoihoc) %>
+                </div>
+              </div>
+
+              <div class="col-md-6 offset-md-3">
+                <div class="form-group">
+                  <%= form.label :syso, "Sỹ số" %>
+                    <%= form.text_field :syso, :class => "form-control", value: "30" %>
+                    <%= error_log(lop, :syso) %>
+                </div>
+              </div>
+
+              <div class="col-md-6 offset-md-3">
+                <div class="form-group">
+                  <%= form.label :namhoc, "Năm học" %>
+                    <select name="lop[namhoc]" id="namHoc" class="form-control"></select>
+                    <%= error_log(lop, :namhoc) %>
+                </div>
+              </div>
+
+              
+
+              <div class="col-md-6 offset-md-3">
+                <div class="form-group">
+                  <%= form.fields_for :phanconggiangdays do |field| %>
+                    <%= field.label :employment_id, "Giáo viên phụ trách" %>
+                      <%= field.collection_select :employment_id, Employment.all, :id, :hoten, :class => 'form-control' %>
+                      <%= error_log(lop, :employment_id) %>
+                        <% end %>
+                </div>
+              </div>
+              <%= form.hidden_field :department_id, value: Department.find_by(name: "Tổ trưởng / phó các lớp").id %>
+            </div>
+            <div class="form-actions">
+              <div class="col-md-6 offset-md-3 text-right">
+                <%= button_tag( :class => 'btn btn-success') do %>
+                  <i class='fa fa-check'></i> Lưu 
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <% end %>
+      </div>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :khoihoc, "Khối học" %>
-    <%= form.text_field :khoihoc, id: :lop_khoihoc %>
   </div>
-
-  <div class="field">
-    <%= form.label :lophoc, "Lớp học" %>
-    <%= form.text_field :lophoc, id: :lop_lophoc %>
-  </div>
-
-  <div class="field">
-    <%= form.label :syso, "Sĩ số" %>
-    <%= form.number_field :syso, id: :lop_syso %>
-  </div>
-
-
-   <%= form.hidden_field :department_id, value: Department.find_by(name: "Tổ trưởng / phó các lớp").id %>
-
-  <div class="actions">
-    <%= form.submit "Tạo lớp" %>
-  </div>
-<% end %>

@@ -1,114 +1,103 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Nhân sư</h1>
+<body class="fix-header fix-sidebar card-no-border">
 
-<table>
-  <thead>
-    <tr>
-      <th>Họ tên</th>
-      <th>Ngày Sinh</th>
-      <th>Giới tính</th>
-      <th>Tengoikhac</th>
-      <th>Số hiệu công chức</th>
-      <th>Chứng minh nhân dân</th>
-      <th>Ngaycapcmnd</th>
-      <th>Noicapcmnd</th>
-      <th>Tenxeptkb</th>
-      <th>Dantoc</th>
-      <th>Tongiao</th>
-      <th>Quoctich</th>
-      <th>Noisinh</th>
-      <th>Diachithuongtru</th>
-      <th>Noiohiennay</th>
-      <th>Dtcoquan</th>
-      <th>Dtnharieng</th>
-      <th>Di dộng:</th>
-      <th>Email:</th>
-      <th>Tinhtranghonnhan</th>
-      <th>Thanhphanxuatthan</th>
-      <th>Dienuutiengd</th>
-      <th>Dienuutienbanthan</th>
-      <th>Nangkieu</th>
-      <th>Suckhoe</th>
-      <th>Nhommau</th>
-      <th>Chieucao</th>
-      <th>Cannang</th>
-      <th>Khuyettan</th>
-      <th>Stk</th>
-      <th>Nganhangmotaikhoan</th>
-      <th>Ngaybatdaudongbhxh</th>
-      <th>Sobhxh</th>
-      <th>Ngayhopdong</th>
-      <th>Ngaytuyendung</th>
-      <th>Hethongtuyendung</th>
-      <th>Coquantuyendung</th>
-      <th>Congviecduocgiao</th>
-      <th>Ngayvecoquanhiennay</th>
-      <th>Thuocloaicanbo</th>
-      <th>Nhomcvhiennay</th>
-      <th>Dangnghibhxh</th>
-      <th>Ngayvaonganhgd</th>
-      <th>Chucvuhientai</th>
-      <th>Hesophucap</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @employments.each do |employment| %>
-      <tr>
-        <td><%= employment.hoten %></td>
-        <td><%= employment.ngaysinh %></td>
-        <td><%= employment.gioitinh %></td>
-        <td><%= employment.tengoikhac %></td>
-        <td><%= employment.sohieucongchuc %></td>
-        <td><%= employment.cmnd %></td>
-        <td><%= employment.ngaycapcmnd %></td>
-        <td><%= employment.noicapcmnd %></td>
-        <td><%= employment.tenxeptkb %></td>
-        <td><%= employment.dantoc %></td>
-        <td><%= employment.tongiao %></td>
-        <td><%= employment.quoctich %></td>
-        <td><%= employment.noisinh %></td>
-        <td><%= employment.diachithuongtru %></td>
-        <td><%= employment.noiohiennay %></td>
-        <td><%= employment.dtcoquan %></td>
-        <td><%= employment.dtnharieng %></td>
-        <td><%= employment.dtdd %></td>
-        <td><%= employment.email %></td>
-        <td><%= employment.tinhtranghonnhan %></td>
-        <td><%= employment.thanhphanxuatthan %></td>
-        <td><%= employment.dienuutiengd %></td>
-        <td><%= employment.dienuutienbanthan %></td>
-        <td><%= employment.nangkieu %></td>
-        <td><%= employment.suckhoe %></td>
-        <td><%= employment.nhommau %></td>
-        <td><%= employment.chieucao %></td>
-        <td><%= employment.cannang %></td>
-        <td><%= employment.khuyettan %></td>
-        <td><%= employment.stk %></td>
-        <td><%= employment.nganhangmotaikhoan %></td>
-        <td><%= employment.ngaybatdaudongbhxh %></td>
-        <td><%= employment.sobhxh %></td>
-        <td><%= employment.ngayhopdong %></td>
-        <td><%= employment.ngaytuyendung %></td>
-        <td><%= employment.hethongtuyendung %></td>
-        <td><%= employment.coquantuyendung %></td>
-        <td><%= employment.ngayvecoquanhiennay %></td>
-        <td><%= employment.thuocloaicanbo %></td>
-        <td><%= employment.nhomcvhiennay %></td>
-        <td><%= employment.dangnghibhxh %></td>
-        <td><%= employment.ngayvaonganhgd %></td>
-        <td><%= employment.chucvuhientai %></td>
-        <td><%= employment.hesophucap %></td>
-        <td><%= link_to 'Show', employment %></td>
-        <td><%= link_to 'Edit', edit_employment_path(employment) %></td>
-        <td><%= link_to 'Destroy', employment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New employment', new_employment_path %>
+<%= render 'layouts/admin_header' %>
+<div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                <div class="row page-titles">
+                    <div class="col-md-5 align-self-center">
+                        <h3 class="text-themecolor">Quản Lý Nhân Sự</h3>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="javascript:void(0)">Trang Chủ </a>
+                            </li>
+                            <li class="breadcrumb-item active">Quản Lý Nhân Sự</li>
+                        </ol>
+                    </div>
+                    <div class="col-md-7 align-self-center text-right d-none d-md-block">
+                        <%= link_to new_employment_path do %>
+                            <i class="fas fa-plus"></i>Thêm mới
+                        <% end %>
+                    </div>
+                </div>
+                    
+                <!-- ============================================================== -->
+                <!-- End Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Bảng thống kê nhân sự</h4>
+                                <h6 class="card-subtitle">Trường AbCxYz</h6>
+                                <div class="table-responsive m-t-40">
+                                    <table id="myTable" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr style="text-align: center">
+                                                <th>Tên giáo viên</th>
+                                                <th>Ngày sinh</th>
+                                                <th>Địa chỉ</th>
+                                                <th>Số điện thoại</th>
+                                                <th>Email</th>
+                                                <th>Chức vụ hiện tại</th>
+                                                <th>Thao tác</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        <% @employments.each do |employment| %>
+                                            <tr>
+                                                <td>employment.hoten</td>
+                                                <td>employment.ngaysinh</td>
+                                                <td>employment.diachithuongtru</td>
+                                                <td>employment.dtdd</td>
+                                                <td>employment.email</td>
+                                                <td>employment.chucvuhientai</td>
+                                                <td>
+                                                    <%= link_to edit_employment_path(employment) do %>
+                                                      <i class="fa fa-pencil text-inverse m-r-10"></i>
+                                                    <% end %>
+                                                    <%= link_to employment, method: :destroy, data: { confirm: 'Are you sure?' } do %>
+                                                      <i class="fa fa-close text-danger"></i>
+                                                    <% end %>
+                                                </td>
+                                            </tr>
+                                          <% end %>
+                                            <!-- <tfoot>
+                                                <tr>
+                                                    <th>Tên giáo viên</th>
+                                                    <th>Ngày sinh</th>
+                                                    <th>Địa chỉ</th>
+                                                    <th>Số điện thoại</th>
+                                                    <th>Email</th>
+                                                    <th>Chức vụ hiện tại</th>
+                                                    <th>Thao tác</th>
+                                                </tr>
+                                            </tfoot> -->
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <!-- ============================================================== -->
+                <!-- End PAge Content -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Right sidebar -->
+                <!-- ============================================================== -->
+                <!-- .right-sidebar -->
+                <!-- ============================================================== -->
+                <!-- End Right sidebar -->
+                <!-- ============================================================== -->
+            
+    <%= render 'layouts/admin_footer' %>

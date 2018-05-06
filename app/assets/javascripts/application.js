@@ -12,8 +12,25 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap/bootstrap-tooltip
+//= require popper
 //= require rails-ujs
 //= require turbolinks
 //= require bootstrap-sprockets
+//= require bootstrap-select
+//= require bootstrap-multiselect
 //= require ckeditor/init
-//= require_tree .
+//= require custom.min
+//= require dashboard1
+//= require sidebarmenu
+//= require perfect-scrollbar.jquery.min
+//= require c3.min
+//= require d3.min
+//= require waves
+//= require raphael-min
+//= require select2.full.min
+//= require jquery.bootstrap-touchspin.min
+//= require jquery.multi-select
+//= require switchery.min
+//= require morris.min
+//= require_self

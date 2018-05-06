@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/scratch-soft/themify-icons-rails.git
+  revision: af9160153187b577d32011fb3cf698a92d81a820
+  specs:
+    themify-icons-rails (1.0.1.2)
+      rails
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -49,6 +56,12 @@ GEM
       autoprefixer-rails (>= 6.0.3)
       popper_js (>= 1.12.9, < 2)
       sass (>= 3.5.2)
+    bootstrap-multiselect-rails (0.9.9)
+      rails (>= 4.0.0)
+    bootstrap-select-rails (1.12.4)
+    bootstrap-tooltip-rails (0.1)
+      rails (>= 3.1)
+      thor
     builder (3.2.3)
     byebug (10.0.2)
     cancancan (2.2.0)
@@ -92,6 +105,8 @@ GEM
     faker (1.8.7)
       i18n (>= 0.7)
     ffi (1.9.23)
+    font-awesome-sass (5.0.9)
+      sass (>= 3.2)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     hirb (0.7.3)
@@ -253,6 +268,9 @@ PLATFORMS
 DEPENDENCIES
   bcrypt (~> 3.1.7)
   bootstrap (~> 4.1.1)
+  bootstrap-multiselect-rails
+  bootstrap-select-rails
+  bootstrap-tooltip-rails
   byebug
   cancancan
   capybara (~> 2.13)
@@ -262,11 +280,13 @@ DEPENDENCIES
   database_cleaner
   devise
   faker
+  font-awesome-sass (~> 5.0.9)
   hirb-unicode
   jbuilder (~> 2.5)
   jquery-rails
   listen (>= 3.0.5, < 3.2)
   paperclip
+  popper_js (~> 1.11, >= 1.11.1)
   puma (~> 3.7)
   rails (~> 5.1.5)
   rails-controller-testing
@@ -276,6 +296,7 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3
+  themify-icons-rails!
   turbolinks (~> 5)
   tzinfo-data
   uglifier (>= 1.3.0)
