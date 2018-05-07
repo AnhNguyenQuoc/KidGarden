@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
 
 
+  
+
   resources :khoanphiphaithus
   resources :taisanlops
   resources :students
   resources :phanconggiangdays
   resources :lops
 
+  get '/admins' => 'admins#index'
 
   mount Ckeditor::Engine => '/ckeditor'
   resources :news

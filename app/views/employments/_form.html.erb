@@ -59,7 +59,7 @@
                   <div style="padding: 0px 5px 0px 0px" class="col-lg-6">
                     <div class="form-group">
                       <%= form.label :noicapcmnd, "Nơi cấp cmnd" %>
-                        <%= form.collection_select :noicapcmnd, Province.all, :name, :name, :class => 'form-control' %>
+                        <%= form.collection_select :noicapcmnd, Province.all, :name, :name,{}, { :class => 'form-control'} %>
                        <%= error_log(@employment, :noicapcmnd) %>
                     </div>
                   </div>
@@ -278,9 +278,9 @@
                     <%= error_log(@employment, :ngaybatdaudongbhxh) %>
                   </div>
 
-                  <div class="form-group">
+                  <div class="form-check form-check-inline">
                     <%= form.label :dangnghibhxh, "Đang nghỉ bhxh" %>
-                      <%= form.check_box :dangnghibhxh %>
+                      <%= form.check_box :dangnghibhxh, :class => 'form-control' %>
                       <%= error_log(@employment, :dangnghibhxh) %>
                   </div>
                 </div>
