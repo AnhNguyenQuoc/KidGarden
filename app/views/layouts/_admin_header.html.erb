@@ -299,13 +299,13 @@
                         <li class="nav-medium-cap">--- QUẢN LÝ</li>
                         <li>
                             <%= link_to employments_path, :class => "waves-effect waves-dark" do %>
-                                <%= icon('fas', 'user') %>
+                                <%= icon('fas', 'address-card') %>
                                 <span class="hide-menu">Quản Lý Nhân Sự</span>
                             <% end %>
-                            <a class="waves-effect waves-dark" href="quan-ly-nguoi-dung.html" aria-expanded="false">
-                                <i class="fa fa-user-o"></i>
+                            <%= link_to users_index_path, :class => "waves-effect waves-dark" do %>
+                                <%= icon('fas','user') %>
                                 <span class="hide-menu">Quản Lý Người Dùng</span>
-                            </a>
+                            <% end %>
                             <%= link_to lops_path, :class => "waves-effect waves-dark" do %>
                                 <%= icon('fas', 'home') %>
                                 <span class="hide-menu">Quản Lý Lớp Học</span>

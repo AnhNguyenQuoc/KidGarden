@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   
 
+  get 'users/index'
+
   resources :khoanphiphaithus
   resources :taisanlops
   resources :students
@@ -10,7 +12,7 @@ Rails.application.routes.draw do
   resources :lops
 
   get '/admins' => 'admins#index'
-
+  get '/admins/users' => 'users#index'
   mount Ckeditor::Engine => '/ckeditor'
   resources :news
   devise_for :users
