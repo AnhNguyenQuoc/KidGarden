@@ -53,18 +53,9 @@
                 <div class="form-group">
                   <%= form.fields_for :phanconggiangdays do |field| %>
                     <%= field.label :employment_id, "Giáo viên phụ trách" %>
-                      <%= field.collection_select :employment_id, Employment.all, :id, :hoten, :class => 'form-control' %>
+                      <%= field.collection_select :employment_id, Employment.all, :id, :hoten, prompt: "Chọn Giáo viên" , :class => 'form-control' %>
                       <%= error_log(lop, :employment_id) %>
-                        <% end %>
-                </div>
-              </div>
-
-              <div class="col-md-6 offset-md-3">
-                <div class="form-group">
-                  <%= form.fields_for :phanconggiangdays do |field| %>
-                    <%= field.label :employment_id, "Giáo viên phụ trách" %>
-                      <%= field.collection_select :employment_id, Employment.all, :id, :hoten, :class => 'form-control' %>
-                      <%= error_log(lop, :employment_id) %>
+                      <br />
                         <% end %>
                 </div>
               </div>
@@ -72,9 +63,9 @@
             </div>
             <div class="form-actions">
               <div class="col-md-6 offset-md-3 text-right">
-                <%= button_tag( :class => 'btn btn-success') do %>
-                  <i class='fa fa-check'></i> Lưu 
-                <% end %>
+                <%= form.button :submit, :class => "btn btn-success" do %>
+                  <i class="fa fa-check"></i> <%= button_text + " Lớp" %>
+                <% end %>               
               </div>
             </div>
           </div>

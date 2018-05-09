@@ -21,7 +21,7 @@
                         </ol>
                     </div>
                     <div class="col-md-7 align-self-center text-right d-none d-md-block">
-                        <%= link_to new_employment_path do %>
+                        <%= link_to new_employment_path, :class => "btn btn-info" do %>
                             <i class="fas fa-plus"></i>Thêm mới
                         <% end %>
                     </div>
@@ -63,10 +63,11 @@
                                                 <td><%=employment.chucvuhientai %></td>
                                                 <td>
                                                     <%= link_to edit_employment_path(employment) do %>
-                                                      <i class="fa fa-pencil text-inverse m-r-10"></i>
+                                                      <%= icon("fas", "edit", class: "text-inverse m-r-10") %>
                                                     <% end %>
+
                                                     <%= link_to employment, method: :destroy, data: { confirm: 'Are you sure?' } do %>
-                                                      <i class="fa fa-close text-danger"></i>
+                                                      <%= icon("fas", "window-close", class: "text-danger") %>
                                                     <% end %>
                                                 </td>
                                             </tr>

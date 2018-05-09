@@ -15,6 +15,7 @@ class LopsController < ApplicationController
   # GET /lops/new
   def new
     @lop = Lop.new
+    2.times { @lop.phanconggiangdays.build }
   end
 
   # GET /lops/1/edit
@@ -25,7 +26,6 @@ class LopsController < ApplicationController
   # POST /lops.json
   def create
     @lop = Lop.new(lop_params)
-
     respond_to do |format|
       if @lop.save
         format.html { redirect_to @lop, notice: 'Lop was successfully created.' }
@@ -69,6 +69,6 @@ class LopsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lop_params
-      params.require(:lop).permit(:khoihoc, :lophoc, :syso, :department_id, :namhoc, phanconggiangdays_attributes: [:employment_id])
+      params.require(:lop).permit(:khoihoc, :lophoc, :syso, :department_id, :namhoc, phanconggiangdays_attributes: [:id, :employment_id])
     end
 end
