@@ -34,9 +34,8 @@
                                         <thead>
                                             <tr style="text-align: center">
                                                 <th>Họ tên</th>
-                                                <th>Tên người dùng</th>
-                                                <th>Số điện thoại</th>
                                                 <th>Email</th>
+                                                <th>Số điện thoại</th>
                                                 <th>Phân quyền</th>
                                                 <th>Thao tác</th>
                                             </tr>
@@ -44,30 +43,30 @@
                                         <tbody>
                                         <% @users.each do |user| %>
                                              <tr>
+                                                <td><%= user.username %></td>
                                                 <td><%= user.email %></td>
-                                                <td>ntliem</td>
-                                                <td>0973458756</td>
-                                                <td>ntliem@gmail.com</td>
+                                                <td><%= user.phone %></td>
                                                 <td>
-                                                    <% if user.admin == 1 %>
-                                                        Phụ Huynh
-                                                    <% elsif user.admin == 2 %>
-                                                        Giáo viên
-                                                    <% else %>
-                                                        Hiệu trưởng
-                                                    <% end %>
+                                                    <%= show_role(user) %>
                                                 </td>
                                                 <td>
                                                     <a href="#" data-toggle="modal" data-original-title="Edit" data-target="#edit">
                                                         <i class="fa fa-pencil text-inverse m-r-10"></i>
+                                                        <%= icon('fas', 'pencil', class: 'text-inverse m-r-10') %>
                                                     </a>
                                                     <a href="#" data-toggle="modal" data-original-title="Close" data-target="#del">
                                                         <i class="fa fa-close text-danger"></i>
+                                                        <%= icon('fas', 'close', class: 'text-danger') %>
                                                     </a>
                                                 </td>
                                             </tr>
                                         <% end %>
-
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 <%= render 'layouts/admin_footer' %>
 
 

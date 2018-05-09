@@ -1,2 +1,3 @@
 module LopsHelper
+
 end

@@ -45,13 +45,15 @@
                   </div>
 
                   <div class="form-group">
-                    <%= form.label :cmnd, "Chức minh nhân dân" %>
+                    <%= form.label :cmnd, "Chứng minh nhân dân" %>
+                    <span style="color: red"> *</span>
                       <%= form.text_field :cmnd, :class => 'form-control' %>
                       <%= error_log(@employment, :cmnd) %>
                   </div>
 
                   <div class="form-group">
                     <%= form.label :ngaycapcmnd, "Ngày cấp cmnd" %>
+                    <span style="color: red"> *</span>
                       <%= form.date_field :ngaycapcmnd, :class => 'form-control' %>
                     <%= error_log(@employment, :ngaycapcmnd) %>
                   </div>
@@ -59,6 +61,7 @@
                   <div style="padding: 0px 5px 0px 0px" class="col-lg-6">
                     <div class="form-group">
                       <%= form.label :noicapcmnd, "Nơi cấp cmnd" %>
+                      <span style="color: red"> *</span>
                         <%= form.collection_select :noicapcmnd, Province.all, :name, :name,{}, { :class => 'form-control'} %>
                        <%= error_log(@employment, :noicapcmnd) %>
                     </div>
@@ -214,6 +217,7 @@
 
                   <div class="form-group">
                     <%= form.label :dtdd, "Điện thoại di động" %>
+                    <span style="color: red"> *</span>
                       <%= form.text_field :dtdd, :class => 'form-control' %>
                       <%= error_log(@employment, :dtdd) %>
                   </div>

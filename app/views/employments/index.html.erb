@@ -55,12 +55,12 @@
                                         <tbody>
                                         <% @employments.each do |employment| %>
                                             <tr>
-                                                <td>employment.hoten</td>
-                                                <td>employment.ngaysinh</td>
-                                                <td>employment.diachithuongtru</td>
-                                                <td>employment.dtdd</td>
-                                                <td>employment.email</td>
-                                                <td>employment.chucvuhientai</td>
+                                                <td><%= employment.hoten %></td>
+                                                <td><%= employment.ngaysinh.strftime("%d-%m-%y") %></td>
+                                                <td><%=employment.diachithuongtru %></td>
+                                                <td><%=employment.dtdd %></td>
+                                                <td><%=employment.email %></td>
+                                                <td><%=employment.chucvuhientai %></td>
                                                 <td>
                                                     <%= link_to edit_employment_path(employment) do %>
                                                       <i class="fa fa-pencil text-inverse m-r-10"></i>

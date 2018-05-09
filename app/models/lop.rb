@@ -1,9 +1,9 @@
 class Lop < ApplicationRecord
   belongs_to :department
   before_save {self.lophoc = lophoc.downcase}
-  has_many :phancongcongviecs
+  has_many :phanconggiangdays
 
-  accepts_nested_attributes_for :phancongcongviecs
+  accepts_nested_attributes_for :phanconggiangdays
   has_many :students
   has_many :taisanlops, dependent: :destroy
   has_many :khoanphiphaithus, dependent: :destroy

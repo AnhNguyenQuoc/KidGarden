@@ -1,5 +1,5 @@
 class Employment < ApplicationRecord
-    belongs_to :departments
+    belongs_to :departments, optional: true
     has_one :phanconggiangday
 
     validates :hoten, :presence => {:message => "Họ tên không được để trống!!!"}
