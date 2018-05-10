@@ -1,10 +1,10 @@
 class TaisanlopsController < ApplicationController
   before_action :set_taisanlop, only: [:show, :edit, :update, :destroy]
-
+   before_action :set_lop, only: [:show, :create, new, :edit, :update, :destroy]
   # GET /taisanlops
   # GET /taisanlops.json
   def index
-    @taisanlops = Taisanlop.all
+    @lop = Lop.find(params[:lop_id])
   end
 
   # GET /taisanlops/1
@@ -14,21 +14,24 @@ class TaisanlopsController < ApplicationController
 
   # GET /taisanlops/new
   def new
-    @taisanlop = Taisanlop.new
+    @lop = Lop.find(params[:lop_id])
+    @taisanlop = @lop.taisanlops.new
   end
 
   # GET /taisanlops/1/edit
   def edit
+    @lop = Lop.find(params[:lop_id])
+    @taisanlop = @lop.taisanlops.find(params[:id])
   end
 
   # POST /taisanlops
   # POST /taisanlops.json
   def create
-    @taisanlop = Taisanlop.new(taisanlop_params)
+    @taisanlop = @current_lop.taisanlops.build(taisanlop_params)
 
     respond_to do |format|
       if @taisanlop.save
-        format.html { redirect_to @taisanlop, notice: 'Taisanlop was successfully created.' }
+        format.html { redirect_to lop_taisanlops_url, notice: 'Taisanlop was successfully created.' }
         format.json { render :show, status: :created, location: @taisanlop }
       else
         format.html { render :new }
@@ -41,8 +44,8 @@ class TaisanlopsController < ApplicationController
   # PATCH/PUT /taisanlops/1.json
   def update
     respond_to do |format|
-      if @taisanlop.update(taisanlop_params)
-        format.html { redirect_to @taisanlop, notice: 'Taisanlop was successfully updated.' }
+      if @taisanlop.update_attributes(taisanlop_params)
+        format.html { redirect_to lop_taisanlops_url, notice: 'Taisanlop was successfully updated.' }
         format.json { render :show, status: :ok, location: @taisanlop }
       else
         format.html { render :edit }
@@ -56,7 +59,7 @@ class TaisanlopsController < ApplicationController
   def destroy
     @taisanlop.destroy
     respond_to do |format|
-      format.html { redirect_to taisanlops_url, notice: 'Taisanlop was successfully destroyed.' }
+      format.html { redirect_to lop_taisanlops_url, notice: 'Taisanlop was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

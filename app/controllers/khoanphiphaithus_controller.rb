@@ -1,10 +1,10 @@
 class KhoanphiphaithusController < ApplicationController
   before_action :set_khoanphiphaithu, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_lop, only: [:show, :create, new, :edit, :update, :destroy]
   # GET /khoanphiphaithus
   # GET /khoanphiphaithus.json
   def index
-    @khoanphiphaithus = Khoanphiphaithu.all
+    @lop = Lop.find(params[:lop_id])
   end
 
   # GET /khoanphiphaithus/1
@@ -14,21 +14,23 @@ class KhoanphiphaithusController < ApplicationController
 
   # GET /khoanphiphaithus/new
   def new
-    @khoanphiphaithu = Khoanphiphaithu.new
+    @lop = Lop.find(params[:lop_id])
+    @khoanphiphaithu = @lop.khoanphiphaithus.new
   end
-
   # GET /khoanphiphaithus/1/edit
+
   def edit
+    @lop = Lop.find(params[:lop_id])
+    @khoanphiphaithu = @lop.khoanphiphaithus.find(params[:id])
   end
 
   # POST /khoanphiphaithus
   # POST /khoanphiphaithus.json
   def create
-    @khoanphiphaithu = Khoanphiphaithu.new(khoanphiphaithu_params)
-
+    @khoanphiphaithu = @current_lop.khoanphiphaithus.build(khoanphiphaithu_params)
     respond_to do |format|
       if @khoanphiphaithu.save
-        format.html { redirect_to @khoanphiphaithu, notice: 'Khoanphiphaithu was successfully created.' }
+        format.html { redirect_to lop_khoanphiphaithus_url, notice: 'Khoanphiphaithu was successfully created.' }
         format.json { render :show, status: :created, location: @khoanphiphaithu }
       else
         format.html { render :new }
@@ -41,8 +43,8 @@ class KhoanphiphaithusController < ApplicationController
   # PATCH/PUT /khoanphiphaithus/1.json
   def update
     respond_to do |format|
-      if @khoanphiphaithu.update(khoanphiphaithu_params)
-        format.html { redirect_to @khoanphiphaithu, notice: 'Khoanphiphaithu was successfully updated.' }
+      if @khoanphiphaithu.update_attributes(khoanphiphaithu_params)
+        format.html { redirect_to lop_khoanphiphaithus_url, notice: 'Khoanphiphaithu was successfully updated.' }
         format.json { render :show, status: :ok, location: @khoanphiphaithu }
       else
         format.html { render :edit }
@@ -54,16 +56,20 @@ class KhoanphiphaithusController < ApplicationController
   # DELETE /khoanphiphaithus/1
   # DELETE /khoanphiphaithus/1.json
   def destroy
-    @khoanphiphaithu.destroy
-    respond_to do |format|
-      format.html { redirect_to khoanphiphaithus_url, notice: 'Khoanphiphaithu was successfully destroyed.' }
-      format.json { head :no_content }
+    if @khoanphiphaithu.destroy
+      respond_to do |format|
+        format.html { redirect_to lop_khoanphiphaithus_url, notice: 'Khoanphiphaithu was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
   end
 
   private
+
+
     # Use callbacks to share common setup or constraints between actions.
     def set_khoanphiphaithu
+      @lop = Lop.find(params[:lop_id])
       @khoanphiphaithu = Khoanphiphaithu.find(params[:id])
     end
 

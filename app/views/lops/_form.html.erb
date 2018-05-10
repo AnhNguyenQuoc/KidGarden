@@ -53,10 +53,11 @@
                 <div class="form-group">
                   <%= form.fields_for :phanconggiangdays do |field| %>
                     <%= field.label :employment_id, "Giáo viên phụ trách" %>
-                      <%= field.collection_select :employment_id, Employment.all, :id, :hoten, prompt: "Chọn Giáo viên" , :class => 'form-control' %>
+                      <% @employment_lop = Department.joins(:employments).select('employments.*').where("departments.name = 'Tổ trưởng / phó các lớp'") %>
+                      <%= field.collection_select :employment_id, @employment_lop.where.not(id: Phanconggiangday.all.map(&:employment_id)), :id, :hoten, prompt: "Chọn Giáo viên" , :class => 'form-control' %>
                       <%= error_log(lop, :employment_id) %>
                       <br />
-                        <% end %>
+                    <% end %>
                 </div>
               </div>
               <%= form.hidden_field :department_id, value: Department.find_by(name: "Tổ trưởng / phó các lớp").id %>

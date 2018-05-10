@@ -1,35 +1,91 @@
-<p id="notice"><%= notice %></p>
+<body class="fix-header fix-sidebar card-no-border">
 
-<h1>Taisanlops</h1>
+  <%= render 'layouts/admin_header' %>
+    <div class="page-wrapper">
+      <!-- ============================================================== -->
+      <!-- Container fluid  -->
+      <!-- ============================================================== -->
+      <div class="container-fluid">
+        <p class="notice flash text-info">
+          <%= notice %>
+        </p>
+        <p class="alert flash text-danger">
+          <%= alert %>
+        </p>
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="row page-titles">
+          <div class="col-md-5 align-self-center">
+            <h3 class="text-themecolor">Quản Lý Tài sản của lớp
+              <%=  @lop.lophoc %>
+            </h3>
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a href="javascript:void(0)">Trang Chủ </a>
+              </li>
+              <li class="breadcrumb-item active">Quản Lý Tài sản </li>
+            </ol>
+          </div>
+          <div class="col-md-7 align-self-center text-right d-none d-md-block">
+            <%= link_to new_lop_taisanlop_url(@lop), :Class => "btn btn-info" do %>
+              <i class="fa fa-plus-circle"></i> Thêm mới
+              <% end %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <h4 class="card-title">Bảng danh sách tài sản</h4>
+              <!-- <h6 class="card-subtitle">Trường AbCxYz</h6> -->
+              <%= link_to lops_path do %>
+                <%= icon("fas", "chevron-circle-left") %> Quay lại
+                  <% end %>
+                    <div class="table-responsive m-t-40">
+                      <table id="myTable" class="table table-bordered table-striped">
+                        <thead>
+                          <tr style="text-align: center">
+                            <th>Tên tài sản</th>
+                            <th>Đơn vị tài sản</th>
+                            <th>Nguồn tài sản</th>
+                            <th>Số lượng</th>
+                            <th>Hình thức</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <% @lop.taisanlops.each do |taisanlop| %>
+                            <tr style="text-align: center">
+                              <td>
+                                <%= taisanlop.tentaisan %>
+                              </td>
+                              <td>
+                                <%= taisanlop.donvitaisan %>
+                              </td>
+                              <td>
+                                <%= taisanlop.nguontaisan %>
+                              </td>
+                              <td>
+                                <%= taisanlop.soluong %>
+                              </td>
+                              <td>
+                                <%= link_to edit_lop_taisanlop_url(@lop, taisanlop) do %>
+                                  <%= icon("fas", "edit", class: "text-inverse m-r-10") %>
+                                    <% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Tentaisan</th>
-      <th>Donvitaisan</th>
-      <th>Nguontaisan</th>
-      <th>Soluong</th>
-      <th>Lop</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+                                      <%= link_to lop_taisanlop_path(@lop.id, taisanlop.id), method: :delete,
+                                       data: { confirm: "You sure?" } do %>
+                                        <%= icon("fas", "window-close", class: "text-danger") %>
+                                          <% end %>
+                              </td>
+                            </tr>
+                            <% end %>
+                        </tbody>
+                      </table>
+                    </div>
+            </div>
+          </div>
+        </div>
+        <%= render 'layouts/admin_footer' %>
 
-  <tbody>
-    <% @taisanlops.each do |taisanlop| %>
-      <tr>
-        <td><%= taisanlop.tentaisan %></td>
-        <td><%= taisanlop.donvitaisan %></td>
-        <td><%= taisanlop.nguontaisan %></td>
-        <td><%= taisanlop.soluong %></td>
-        <td><%= taisanlop.lop %></td>
-        <td><%= link_to 'Show', taisanlop %></td>
-        <td><%= link_to 'Edit', edit_taisanlop_path(taisanlop) %></td>
-        <td><%= link_to 'Destroy', taisanlop, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
-
-<%= link_to 'New Taisanlop', new_taisanlop_path %>
+</body>

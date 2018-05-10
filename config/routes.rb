@@ -1,16 +1,14 @@
 Rails.application.routes.draw do
-
-
-
-
   get '/admins' => 'admins#index'
   scope "/admins" do
     get '/users' => 'users#index'
-    resources :khoanphiphaithus
-    resources :taisanlops
-    resources :students
-    resources :phanconggiangdays
-    resources :lops
+
+    resources :lops do
+      resources :khoanphiphaithus
+      resources :taisanlops
+      resources :students
+      resources :phanconggiangdays
+    end
     resources :departments
     resources :employments
   end

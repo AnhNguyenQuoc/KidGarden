@@ -1,5 +1,131 @@
-<h1>New Student</h1>
+<body class="fix-header fix-sidebar card-no-border">
 
-<%= render 'form', student: @student %>
+    <%= render 'layouts/admin_header' %>
+        <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <div class="notice"></div>
+                <!-- ============================================================== -->
+                <!-- Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                <div class="row page-titles">
+                    <div class="col-md-5 align-self-center">
+                        <h3 class="text-themecolor">Chỉnh sửa quản lý lớp học</h3>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="javascript:void(0)">Trang chủ</a>
+                            </li>
+                            <li class="breadcrumb-item active">Chỉnh sửa quản lý lớp học</li>
+                        </ol>
+                    </div>
+                </div>
 
-<%= link_to 'Back', students_path %>
+                <%= form_for [@lop, @student] do |form| %>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card card-outline-inverse">
+                                <div class="card-header white">
+                                    Thông Tin Học Sinh
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <%= form.label :hoten, "Họ Tên" %>
+                                                    <%= form.text_field :hoten, :class => "form-control"%>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <%= form.label :ngaysinh %>
+                                                    <%= form.date_field  :ngaysinh, :class => "form-control" %>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <%= form.label :gioitinh, "Giới tính"%>
+                                                    <%= form.label :gioitinh, "Nam"%>
+                                                        <%= form.radio_button :gioitinh, true %>
+                                                            <%= form.label :gioitinh, "Nữ"%>
+                                                                <%= form.radio_button :gioitinh, false %>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <%= form.label :choohientai, "Chỗ ở hiện tại" %>
+                                                    <%= form.text_field :choohientai, :class => "form-control" %>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <%= form.label :hokhauthuongtru, "Hộ khẩu thường trú" %>
+                                                    <%= form.text_field :hokhauthuongtru, :class => "form-control" %>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <%= form.label :noisinh, "Nơi sinh" %>
+                                                    <%= form.text_field :noisinh, :class => "form-control" %>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <%= form.label :quequan, "Quê quán" %>
+                                                    <%= form.text_field :quequan, :class => "form-control" %>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <%= form.label :dantoc, "Dân tộc" %>
+                                                    <%= form.text_field :dantoc, :class => "form-control" %>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <%= form.label :dienchinhsach, "Diện chính sách" %>
+                                                    <%= form.text_field :dienchinhsach, :class => "form-control"%>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <%= form.label :canngheo, "Cận nghèo" %>
+                                                    <%= form.check_box :canngheo, :class => "form-control" %>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <%= form.label :tencha, "Tên cha" %>
+                                                    <%= form.text_field :tencha, :class => "form-control" %>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <%= form.label :nghenghiepcha, "Nghề nghiệp cha" %>
+                                                    <%= form.text_field :nghenghiepcha, :class => "form-control" %>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <%= form.label :dienthoaibo, "Điện thoại cha" %>
+                                                    <%= form.number_field :dienthoaibo, :class => "form-control" %>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <%= form.label :tenme, "Tên mẹ" %>
+                                                    <%= form.text_field :tenme, :class => "form-control" %>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <%= form.label :nghenghiepme, "Nghề nghiệp mẹ" %>
+                                                    <%= form.text_field :nghenghiepme, :class => "form-control" %>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <%= form.label :dienthoaime, "Điện thoại mẹ" %>
+                                                    <%= form.number_field :dienthoaime, :class => "form-control" %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="float: right !important;">
+                                <%= form.submit button_text + " Học sinh", :class => "btn btn-primary" %>
+                            </div>
+                            <% end %>
+                        </div>
+                    </div>
+                    <%= render 'layouts/admin_footer' %>
+
+
+</body>

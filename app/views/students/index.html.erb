@@ -1,57 +1,90 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Students</h1>
+<body class="fix-header fix-sidebar card-no-border">
 
-<table>
-  <thead>
-    <tr>
-      <th>Hoten</th>
-      <th>Ngaysinh</th>
-      <th>Gioitinh</th>
-      <th>Choohientai</th>
-      <th>Hokhauthuongtru</th>
-      <th>Noisinh</th>
-      <th>Quequan</th>
-      <th>Dantoc</th>
-      <th>Dienchinhsach</th>
-      <th>Canngheo</th>
-      <th>Tencha</th>
-      <th>Nghenghiepcha</th>
-      <th>Dienthoaibo</th>
-      <th>Tenme</th>
-      <th>Nghenghiepme</th>
-      <th>Dienthoaime</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <%= render 'layouts/admin_header' %>
+    <div class="page-wrapper">
+      <!-- ============================================================== -->
+      <!-- Container fluid  -->
+      <!-- ============================================================== -->
+      <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="row page-titles">
+          <div class="col-md-5 align-self-center">
+            <h3 class="text-themecolor">Quản Lý học sinh của lớp
+              <%=  @lop.lophoc %>
+            </h3>
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a href="javascript:void(0)">Trang Chủ </a>
+              </li>
+              <li class="breadcrumb-item active">Quản Lý học sinh</li>
+            </ol>
+          </div>
+          <div class="col-md-7 align-self-center text-right d-none d-md-block">
+            <%= link_to new_lop_student_url(@lop), :Class => "btn btn-info" do %>
+              <i class="fa fa-plus-circle"></i> Thêm mới
+            <% end %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <h4 class="card-title">Bảng danh sách người dùng</h4>
+              <!-- <h6 class="card-subtitle">Trường AbCxYz</h6> -->
+              <%= link_to lops_path do %>
+                  <%= icon("fas", "chevron-circle-left") %> Quay lại
+              <% end %>
+              <div class="table-responsive m-t-40">
+                <table id="myTable" class="table table-bordered table-striped">
+                  <thead>
+                    <tr style="text-align: center">
+                      <th>Họ tên</th>
+                      <th>Ngày sinh</th>
+                      <th>Giới tính</th>
+                      <th>Chỗ ở hiện nay</th>
+                      <th>Hộ khẩu thường trú</th>
+                      <th>Thao tác</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% @lop.students.each do |student| %>
+                      <tr style="text-align: center">
+                        <td>
+                          <%= student.hoten %>
+                        </td>
+                        <td>
+                          <%= student.ngaysinh.strftime("%d-%m-%y") %>
+                        </td>
+                        <td>
+                          <%= student.gioitinh ? "Nam" : "Nữ" %>
+                        </td>
+                        <td>
+                          <%= student.choohientai %>
+                        </td>
+                        <td>
+                          <%= student.hokhauthuongtru %>
+                        </td>
+                        <td>
+                          <%= link_to edit_lop_student_url(@lop, student) do %>
+                            <%= icon("fas", "edit", class: "text-inverse m-r-10") %>
+                          <% end %>
 
-  <tbody>
-    <% @students.each do |student| %>
-      <tr>
-        <td><%= student.hoten %></td>
-        <td><%= student.ngaysinh %></td>
-        <td><%= student.gioitinh %></td>
-        <td><%= student.choohientai %></td>
-        <td><%= student.hokhauthuongtru %></td>
-        <td><%= student.noisinh %></td>
-        <td><%= student.quequan %></td>
-        <td><%= student.dantoc %></td>
-        <td><%= student.dienchinhsach %></td>
-        <td><%= student.canngheo %></td>
-        <td><%= student.tencha %></td>
-        <td><%= student.nghenghiepcha %></td>
-        <td><%= student.dienthoaibo %></td>
-        <td><%= student.tenme %></td>
-        <td><%= student.nghenghiepme %></td>
-        <td><%= student.dienthoaime %></td>
-        <td><%= link_to 'Show', student %></td>
-        <td><%= link_to 'Edit', edit_student_path(student) %></td>
-        <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+                          <%= link_to lop_student_path(@lop.id, student.id), method: :delete,
+                                       data: { confirm: "You sure?" } do %>
+                            <%= icon("fas", "window-close", class: "text-danger") %>
+                          <% end %>
+                        </td>
+                      </tr>
+                      <% end %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <%= render 'layouts/admin_footer' %>
 
-<br>
 
-<%= link_to 'New Student', new_student_path %>
+</body>

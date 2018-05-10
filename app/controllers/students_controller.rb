@@ -1,10 +1,10 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_lop, only: [:show, :create, new, :edit, :update, :destroy]
   # GET /students
   # GET /students.json
   def index
-    @students = Student.all
+    @lop = Lop.find(params[:lop_id])
   end
 
   # GET /students/1
@@ -14,21 +14,24 @@ class StudentsController < ApplicationController
 
   # GET /students/new
   def new
-    @student = Student.new
+    @lop = Lop.find(params[:lop_id])
+    @student = @lop.students.new
   end
 
   # GET /students/1/edit
   def edit
+    @lop = Lop.find(params[:lop_id])
+    @student = @lop.students.find(params[:id])
   end
 
   # POST /students
   # POST /students.json
   def create
-    @student = Student.new(student_params)
+    @student = @current_lop.students.build(student_params)
 
     respond_to do |format|
       if @student.save
-        format.html { redirect_to @student, notice: 'Student was successfully created.' }
+        format.html { redirect_to lop_students_url, notice: 'Student was successfully created.' }
         format.json { render :show, status: :created, location: @student }
       else
         format.html { render :new }
@@ -42,7 +45,7 @@ class StudentsController < ApplicationController
   def update
     respond_to do |format|
       if @student.update(student_params)
-        format.html { redirect_to @student, notice: 'Student was successfully updated.' }
+        format.html { redirect_to lop_students_url, notice: 'Student was successfully updated.' }
         format.json { render :show, status: :ok, location: @student }
       else
         format.html { render :edit }
@@ -54,10 +57,12 @@ class StudentsController < ApplicationController
   # DELETE /students/1
   # DELETE /students/1.json
   def destroy
-    @student.destroy
-    respond_to do |format|
-      format.html { redirect_to students_url, notice: 'Student was successfully destroyed.' }
-      format.json { head :no_content }
+    @student = @current_lop.students.find(params[:id])
+    if @student.destroy
+      respond_to do |format|
+        format.html { redirect_to students_url, notice: 'Student was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
   end
 
@@ -69,6 +74,6 @@ class StudentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
-      params.require(:student).permit(:hoten, :ngaysinh, :gioitinh, :choohientai, :hokhauthuongtru, :noisinh, :quequan, :dantoc, :dienchinhsach, :canngheo, :tencha, :nghenghiepcha, :dienthoaibo, :tenme, :nghenghiepme, :dienthoaime, :lop_id)
+      params.require(:student).permit(:hoten, :ngaysinh, :gioitinh, :choohientai, :hokhauthuongtru, :noisinh, :quequan, :dantoc, :dienchinhsach, :canngheo, :tencha, :nghenghiepcha, :dienthoaibo, :tenme, :nghenghiepme, :dienthoaime)
     end
 end
